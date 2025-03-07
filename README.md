@@ -1,1 +1,1 @@
-# windows-11-answer-file
+minimal installation of windows 11
