@@ -1,5 +1,5 @@
-winget install hwinfo
-winget install Valve.Steam
-winget install Google.Chrome
-winget install Transmission.Transmission
-winget install PeterPawlowski.foobar2000
+winget install --id=hwinfo -e
+winget install --id=Valve.Steam -e
+winget install --id=Google.Chrome -e
+winget install --id=Transmission.Transmission  -e
+winget install --id=PeterPawlowski.foobar2000 -e
