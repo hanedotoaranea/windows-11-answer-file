@@ -1,5 +1,5 @@
-winget download hwinfo -s winget
-winget download  Valve.Steam -s winget
-winget download  Google.Chrome -s winget
-winget download  Transmission.Transmission -s winget
-winget download  PeterPawlowski.foobar2000 -s winget
+winget download --id=hwinfo -s winget -e
+winget download  --id=Valve.Steam -s winget -e
+winget download  --id=Google.Chrome -s winget -e
+winget download  --id=Transmission.Transmission -s winget -e
+winget download  --id=PeterPawlowski.foobar2000 -s winget -e
