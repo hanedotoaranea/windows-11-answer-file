@@ -65,6 +65,49 @@ sc config SensorDataService start= disabled
 net stop SensrSvc  
 sc config SensrSvc start= disabled  
 
+sc stop spooler
+sc config spooler start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Spooler" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop RasMan
+sc config RasMan start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\RasMan" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop TrkWks
+sc config TrkWks start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrkWks" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop LanmanServer
+sc config LanmanServer start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop SstpSvc
+sc config SstpSvc start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\SstpSvc" /v "Start" /t REG_DWORD /d 4 /f 
+
+sc stop lmhosts
+sc config lmhosts start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\lmhosts" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop RmSvc
+sc config RmSvc start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\RmSvc" /v "Start" /t REG_DWORD /d 4 /f
+
+sc stop lfsvc
+sc config lfsvc start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\lfsvc" /v "Start" /t REG_DWORD /d 4 /f
+
+
+sc stop TabletInputService
+sc config TabletInputService start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\TabletInputService" /v "Start" /t REG_DWORD /d 4 /f
+
+
+sc stop LanmanWorkstation
+sc config LanmanWorkstation start= disabled
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d 4 /f
+
+
 
 
 
