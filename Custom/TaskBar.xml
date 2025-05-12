@@ -6,7 +6,6 @@
         <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk" />
         <taskbar:DesktopApp DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Accessories\Notepad.lnk" />
         <taskbar:UWA AppUserModelID="Microsoft.WindowsAlarms_8wekyb3d8bbwe!App" />
-        <taskbar:DesktopApp DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Accessories\Snipping Tool.lnk" />
         <taskbar:DesktopApp DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Accessories\Paint.lnk" />
         <taskbar:UWA AppUserModelID="Microsoft.BingWeather_8wekyb3d8bbwe!App" />
       </taskbar:TaskbarPinList>
