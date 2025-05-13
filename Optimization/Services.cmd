@@ -106,7 +106,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\TabletInputService" /v "Start" /
 sc stop LanmanWorkstation
 sc config LanmanWorkstation start= disabled
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation" /v "Start" /t REG_DWORD /d 4 /f
-
+sc stop "SysMain" && sc config "SysMain" start=disabled
 
 
 
