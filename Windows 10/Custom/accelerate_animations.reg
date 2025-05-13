@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="50"
+"HungAppTimeout"="1000"
+"WaitToKillAppTimeout"="2000"
+"AutoEndTasks"="1"
+"LowLevelHooksTimeout"="1000"
