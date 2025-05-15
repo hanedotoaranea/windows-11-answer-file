@@ -1,7 +1,8 @@
 minimal installation of windows 10
 https://schneegans.de/windows/unattend-generator/
-![image](https://github.com/user-attachments/assets/2f971787-8da1-4aa5-80c9-d07a8c140031)
 
+
+![img0_3840x2160 (1)](https://github.com/user-attachments/assets/6868a731-7e71-46c6-aef3-d965aa306246)
 
 
 
