@@ -1,2 +1,0 @@
-DISM /Online /Disable-Feature /Featurename:Recall
-DISM /Online /Get-Featureinfo /Featurename:Recall
