@@ -5,10 +5,3 @@ reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d "1" /f
 reg add "HKCU\Control Panel\Desktop" /v LowLevelHooksTimeout /t REG_SZ /d "1000" /f
 reg add "HKCU\Control Panel\Desktop" /v UserPreferencesMask /t REG_BINARY /d b012038010000000 /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
-powershell -command "Get-AppxPackage -AllUsers %%a | Remove-AppxPackage -ErrorAction SilentlyContinue"
-for %%a in (
-    "*StorePurchaseApp*"
-    "*Store*"
-    "*Windows.DevHome*"
-    "*windowsphone*"
-    "*xboxapp*"
