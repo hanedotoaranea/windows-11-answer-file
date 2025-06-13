@@ -43,5 +43,6 @@ foreach ($service in $services) {
 
 Get-AppxPackage -AllUsers | Remove-AppxPackage
 
+bcdedit /set {current} bootmenupolicy legacy
 
 
