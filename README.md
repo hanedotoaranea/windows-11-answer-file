@@ -1,3 +1,4 @@
+Applicable to Windows 10.
 Use this link to check the contents of the file it changes (if you know what you are doing) autounnated.xml to ensure the cleanliness and quality of the file contents.
 https://schneegans.de/windows/unattend-generator/
 
