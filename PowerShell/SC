@@ -1,70 +1,31 @@
-sc delete SysMain
 sc config SysMain start= disabled
-sc delete spooler
 sc config spooler start= disabled
-sc delete bthserv
 sc config bthserv start= disabled
-sc delete fax
 sc config fax start= disabled
-sc delete XblAuthManager
 sc config XblAuthManager start= disabled
-sc delete XblGameSave
 sc config XblGameSave start= disabled
-sc delete XboxNetApiSvc
 sc config XboxNetApiSvc start= disabled
-sc delete lfsvc
 sc config lfsvc start= disabled
-sc delete RemoteRegistry
 sc config RemoteRegistry start= disabled
-sc delete AJRouter
 sc config AJRouter start= disabled
-sc delete NetTcpPortSharing
 sc config NetTcpPortSharing start= disabled
-sc delete WiaRpc
 sc config WiaRpc start= disabled
-sc delete BDESVC
 sc config BDESVC start= disabled
-sc delete TabletInputService
 sc config TabletInputService start= disabled
-sc delete TouchKeyboardAndHandwritingPanelService
 sc config TouchKeyboardAndHandwritingPanelService start= disabled
-sc delete WSearch
 sc config WSearch start= disabled
-sc delete SCardSvr
 sc config SCardSvr start= disabled
-sc delete WpcMonSvc
 sc config WpcMonSvc start= disabled
-sc delete HvHost
 sc config HvHost start= disabled
-sc delete Browser
 sc config Browser start= disabled
-sc delete WMPNetworkSvc
 sc config WMPNetworkSvc start= disabled
-sc delete DiagTrack
 sc config DiagTrack start= disabled
-sc delete SensorDataService
 sc config SensorDataService start= disabled
-sc delete SensrSvc
 sc config SensrSvc start= disabled
-sc delete RasMan
 sc config RasMan start= disabled
-sc delete TrkWks
 sc config TrkWks start= disabled
-sc delete LanmanServer
 sc config LanmanServer start= disabled
-sc delete SstpSvc
 sc config SstpSvc start= disabled
-sc delete lmhosts
 sc config lmhosts start= disabled
-sc delete RmSvc
 sc config RmSvc start= disabled
-sc delete LanmanWorkstation
 sc config LanmanWorkstation start= disabled
-sc delete 
-sc config  start= disabled
-sc delete 
-sc config  start= disabled
-sc delete 
-sc config  start= disabled
-sc delete 
-sc config  start= disabled
