@@ -3,7 +3,8 @@ Use this link to check the contents of the file it changes (if you know what you
 https://schneegans.de/windows/unattend-generator/
 
 Move the autounnated.xml file to a bootable USB flash drive with original Windows 10 or Windows 11 images to optimize the installation, disable telemetry and get a new Windows experience!
-![img102](https://github.com/user-attachments/assets/d9c88008-307e-49b5-b960-883b01c2dbd4)
+<img width="840" height="472" alt="image" src="https://github.com/user-attachments/assets/70c60850-8a53-4661-8658-534e722c452a" />
+
 
 
 
