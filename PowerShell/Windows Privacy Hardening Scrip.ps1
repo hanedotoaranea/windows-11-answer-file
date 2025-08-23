@@ -1,7 +1,3 @@
-powershell -command "Get-AppxPackage -AllUsers *StorePurchaseApp* | Remove-AppxPackage -ErrorAction SilentlyContinue"
-powershell -command "Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage -ErrorAction SilentlyContinue"
-powershell -command "Get-AppxPackage -AllUsers *Store* | Remove-AppxPackage -ErrorAction SilentlyContinue"
-powershell -command "Get-AppxPackage *Store* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -command "Get-AppxPackage -AllUsers *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -command "Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -command "Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue"
@@ -52,5 +48,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" /v "ToastEnabled" /t REG_DWORD /d 0 /f
+
 
 
