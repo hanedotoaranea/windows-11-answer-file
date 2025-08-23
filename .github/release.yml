@@ -1,0 +1,20 @@
+# .github/release.yml
+changelog:
+  categories:
+    - title: Breaking Changes 🚨
+      labels:
+        - breaking-change
+    - title: New Features ✨
+      labels:
+        - feature
+    - title: Bug Fixes 🐛
+      labels:
+        - bug
+    - title: Other Changes
+      labels:
+        - "*"
+
+# Добавьте эту секцию для иконки
+header: |
+  # 🎉 Новый релиз!
+  ![Release Banner](https://via.placeholder.com/800x200/0088cc/ffffff?text=My+Awesome+Release)
