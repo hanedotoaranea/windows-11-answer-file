@@ -3,7 +3,7 @@ Use this link to check the contents of the file it changes (if you know what you
 https://schneegans.de/windows/unattend-generator/
 
 Move the autounnated.xml file to a bootable USB flash drive with original Windows 10 or Windows 11 images to optimize the installation, disable telemetry and get a new Windows experience!
-[![Статус](https://img.shields.io/badge/версия-в_разработке-orange?style=for-the-badge&logo=github)](https://github.com/hanedotoaranea/windows-11-answer-file)
-[![Все релизы](https://img.shields.io/github/v/release/hanedotoaranea/windows-11-answer-file?include_prereleases&style=for-the-badge&label=все+релизы)](https://github.com/hanedotoaranea/windows-11-answer-file/releases)
-[![Размер репозитория](https://img.shields.io/github/repo-size/hanedotoaranea/windows-11-answer-file?style=for-the-badge)](https://github.com/hanedotoaranea/windows-11-answer-file)
+[![Version](https://img.shields.io/badge/версия-в_разработке-orange?style=for-the-badge&logo=github)](https://github.com/hanedotoaranea/windows-11-answer-file)
+[![All releases](https://img.shields.io/github/v/release/hanedotoaranea/windows-11-answer-file?include_prereleases&style=for-the-badge&label=все+релизы)](https://github.com/hanedotoaranea/windows-11-answer-file/releases)
+[![Repo size](https://img.shields.io/github/repo-size/hanedotoaranea/windows-11-answer-file?style=for-the-badge)](https://github.com/hanedotoaranea/windows-11-answer-file)
 <img width="1920" height="1080" alt="12312312312312312" src="https://github.com/user-attachments/assets/0368ea3f-ccf6-4b86-9ae7-6b1d465cca5d" />
