@@ -1,0 +1,21 @@
+# Останавливаем и отключаем службы
+Stop-Service -Name CDPSvc -Force -ErrorAction SilentlyContinue
+Set-Service -Name CDPSvc -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name CDPUserSvc_237c2c -Force -ErrorAction SilentlyContinue
+Set-Service -Name CDPUserSvc_237c2c -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name NPSMSvc_237c2c -Force -ErrorAction SilentlyContinue
+Set-Service -Name NPSMSvc_237c2c -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name SSDPSRV -Force -ErrorAction SilentlyContinue
+Set-Service -Name SSDPSRV -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name TextInputManagementService -Force -ErrorAction SilentlyContinue
+Set-Service -Name TextInputManagementService -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name whesvc -Force -ErrorAction SilentlyContinue
+Set-Service -Name whesvc -StartupType Disabled -ErrorAction SilentlyContinue
+
+Stop-Service -Name WSAFabricSvc -Force -ErrorAction SilentlyContinue
+Set-Service -Name WSAFabricSvc -StartupType Disabled -ErrorAction SilentlyContinue
