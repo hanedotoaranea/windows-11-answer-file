@@ -75,9 +75,6 @@ foreach ($app in $apps) {
 
 Write-Host "Встроенные приложения удалены!" -ForegroundColor Green
 
-sc config "WSearch" start= disabled
-sc stop "WSearch"
-
-cleanmgr /sagerun:1
-
+sc.exe config "WSearch" start= disabled
+sc.exe stop "WSearch"
 fsutil behavior set DisableDeleteNotify 0
