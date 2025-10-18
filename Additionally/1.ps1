@@ -25,7 +25,6 @@ $services = @(
     "MapsBroker",            # Downloaded Maps Manager
     "NetTcpPortSharing",     # Net.Tcp Port Sharing
     "RemoteRegistry",        # Remote Registry
-    "SysMain",               # Superfetch (может нагружать HDD)
     "TrkWks",                # Distributed Link Tracking Client
     "WSearch",               # Windows Search (если не нужен поиск)
     "XblAuthManager",        # Xbox Live Auth Manager
