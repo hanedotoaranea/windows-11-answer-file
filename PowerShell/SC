@@ -1,3 +1,4 @@
+DISM /Online /Disable-Feature /Featurename:Recall
 sc.exe stop SysMain; sc.exe config SysMain start= disabled
 sc.exe stop spooler; sc.exe config spooler start= disabled
 sc.exe stop bthserv; sc.exe config bthserv start= disabled
