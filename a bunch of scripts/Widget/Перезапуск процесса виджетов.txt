@@ -1,0 +1,8 @@
+Stop-Process -Name "Widgets" -Force
+# Закройте виджеты
+Stop-Process -Name "Widgets" -Force -ErrorAction SilentlyContinue
+
+# Удалите кэш
+Remove-Item -Path "$env:LOCALAPPDATA\Packages\MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy\LocalCache\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:LOCALAPPDATA\Packages\MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy\LocalState\*" -Recurse -Force -ErrorAction SilentlyContinue
+

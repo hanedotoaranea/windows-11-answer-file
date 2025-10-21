@@ -1,9 +1,0 @@
-winget install Microsoft.Edge
-# Проверить состояние хранилища
-powershell "Get-WindowsImage -ImagePath C:\Windows\system32\config\SOFTWARE | Format-List"
-
-# Восстановить из резервной копии
-powershell "Repair-WindowsImage -Online -RestoreHealth"
-
-sfc /scannow
-DISM /Online /Cleanup-Image /RestoreHealth
