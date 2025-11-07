@@ -1,5 +1,5 @@
 Applicable to Windows 10.
-Use this link to check the contents of the file it changes autounnated.xml to ensure the source code purity of the file contents.
+Use this link to check the contents of the file it changes autounnated.xml
 https://schneegans.de/windows/unattend-generator/
 
 Move the autounnated.xml file to a bootable USB flash drive with original Windows 10 or Windows 11 images to optimize the installation, disable telemetry and get a new Windows experience!
