@@ -5,6 +5,8 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IoPageLockLimit" /t REG_DWORD /d 00010000 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 128 /f
+# Установка схемы "Высокая производительность" (пример GUID)
+powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
 
 #2. СИСТЕМНЫЕ ПОЛИТИКИ
