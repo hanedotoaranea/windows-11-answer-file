@@ -55,7 +55,12 @@ sc.exe config SensrSvc start= disabled
 sc.exe config RmSvc start= disabled
 sc.exe config SstpSvc start= disabled
 sc.exe config lmhosts start= disabled
-
+sc.exe config WpnService start=disabled
+sc.exe config SysMain start=disabled
+sc.exe config WbioSrvc start=disabled
+sc.exe config ShellHWDetection start=disabled
+sc.exe config Themes start=disabled
+sc.exe config DusmSvc start=disabled
 
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
