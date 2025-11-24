@@ -29,7 +29,6 @@ sc.exe config DiagTrack start= disabled
 sc.exe config CDPSvc start= disabled
 sc.exe config CDPUserSvc_237c2c start= disabled
 sc.exe config NPSMSvc_237c2c start= disabled
-sc.exe config SSDPSRV start= disabled
 sc.exe config TextInputManagementService start= disabled
 sc.exe config whesvc start= disabled
 sc.exe config WSAFabricSvc start= disabled
@@ -59,8 +58,8 @@ sc.exe config WpnService start=disabled
 sc.exe config SysMain start=disabled
 sc.exe config WbioSrvc start=disabled
 sc.exe config ShellHWDetection start=disabled
-sc.exe config Themes start=disabled
 sc.exe config DusmSvc start=disabled
+sc.exe config SensorService start=disabled
 
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
