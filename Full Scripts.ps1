@@ -63,7 +63,6 @@ sc.exe config SensorService start=disabled
 
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows Search" /v SetupCompletedSuccessfully /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d 0 /f
 fsutil behavior set DisableDeleteNotify 0
 bcdedit /set {current} bootmenupolicy legacy
