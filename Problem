@@ -1,0 +1,10 @@
+#DISM и SFC - "Восстановление системы"
+# Проверка целостности
+sfc /scannow
+# Восстановление образов
+DISM /Online /Cleanup-Image /RestoreHealth
+# Включение меню загрузки
+bcdedit /set {current} bootmenupolicy legacy
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61  # Ultimate Performance
+# Таймаут загрузки
+bcdedit /set {current} timeout 3
