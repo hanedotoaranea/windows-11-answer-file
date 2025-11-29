@@ -60,12 +60,36 @@ sc.exe config WbioSrvc start=disabled
 sc.exe config ShellHWDetection start=disabled
 sc.exe config DusmSvc start=disabled
 sc.exe config SensorService start=disabled
+#
+sc.exe config AppMgmt start= disabled
+sc.exe config BITS start= disabled
+sc.exe config cbdhsvc start= disabled
+sc.exe config DevicesFlowUserSvc start= disabled
+sc.exe config DeviceAssociationService start= disabled
+sc.exe config DispBrokerDesktopSvc start= disabled
+sc.exe config DsSvc start= disabled
+sc.exe config ftpsvc start= disabled
+sc.exe config LanmanServer start= disabled
+sc.exe config hidserv start= disabled
+sc.exe config wcncsvc start= disabled
+sc.exe config TextInputManagementService start= disabled
+# Отключите сенсорную клавиатуру через реестр
+reg add "HKCU\Software\Microsoft\TabletTip\1.7" /v "EnableDesktopModeAutoInvoke" /t REG_DWORD /d 0 /f
+sc.exe config Themes start= disabled
+sc.exe config StiSvc start= disabled
+sc.exe config ShellHWDetection start= disabled
+sc.exe config SensorService start= disabled
+sc.exe config SharedAccess start= disabled
+sc.exe config RasMan start= disabled
+sc.exe config QWAVE start= disabled
+sc.exe config PcaSvc start= disabled
+sc.exe config NPSMSvc start= disabled
 
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d 0 /f
 fsutil behavior set DisableDeleteNotify 0
-bcdedit /set {current} bootmenupolicy legacy
+bcdedit /set {current} bootmenupolicy standard
 
 
 #5. ЗАДАНИЯ ПЛАНИРОВЩИКА
