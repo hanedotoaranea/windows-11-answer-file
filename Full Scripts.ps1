@@ -63,7 +63,6 @@ sc.exe config SensorService start=disabled
 #
 sc.exe config AppMgmt start= disabled
 sc.exe config BITS start= disabled
-sc.exe config cbdhsvc start= disabled
 sc.exe config DevicesFlowUserSvc start= disabled
 sc.exe config DeviceAssociationService start= disabled
 sc.exe config DispBrokerDesktopSvc start= disabled
