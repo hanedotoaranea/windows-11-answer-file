@@ -76,7 +76,6 @@ sc.exe config TextInputManagementService start= disabled
 reg add "HKCU\Software\Microsoft\TabletTip\1.7" /v "EnableDesktopModeAutoInvoke" /t REG_DWORD /d 0 /f
 sc.exe config Themes start= disabled
 sc.exe config StiSvc start= disabled
-sc.exe config ShellHWDetection start= disabled
 sc.exe config SensorService start= disabled
 sc.exe config SharedAccess start= disabled
 sc.exe config RasMan start= disabled
