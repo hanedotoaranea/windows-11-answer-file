@@ -61,7 +61,6 @@ sc.exe config HvHost start= disabled
 sc.exe config Browser start= disabled
 sc.exe config WMPNetworkSvc start= disabled
 sc.exe config SensorDataService start= disabled
-sc.exe config SensrSvc start= disabled
 sc.exe config RmSvc start= disabled
 sc.exe config SstpSvc start= disabled
 sc.exe config lmhosts start= disabled
@@ -86,12 +85,10 @@ Stop-Service "WSearch"
 Set-Service "WSearch" -StartupType Disabled
 reg add "HKCU\Software\Microsoft\TabletTip\1.7" /v "EnableDesktopModeAutoInvoke" /t REG_DWORD /d 0 /f
 sc.exe config StiSvc start= disabled
-sc.exe config SensorService start= disabled
 sc.exe config SharedAccess start= disabled
 sc.exe config RasMan start= disabled
 sc.exe config QWAVE start= disabled
 sc.exe config PcaSvc start= disabled
-sc.exe config NPSMSvc start= disabled
 Stop-Service "DiagTrack"
 Set-Service "DiagTrack" -StartupType Disabled
 
