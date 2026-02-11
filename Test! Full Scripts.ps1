@@ -37,8 +37,7 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" 
 Stop-Service "SysMain"
 Set-Service "SysMain" -StartupType Disabled
 sc.exe config DiagTrack start= disabled
-sc.exe config CDPSvc start= disabled
-sc.exe config CDPUserSvc_237c2c start= disabled
+
 sc.exe config NPSMSvc_237c2c start= disabled
 sc.exe config TextInputManagementService start= disabled
 sc.exe config whesvc start= disabled
@@ -68,18 +67,12 @@ sc.exe config WpnService start=disabled
 sc.exe config SysMain start=disabled
 sc.exe config WbioSrvc start=disabled
 sc.exe config ShellHWDetection start=disabled
-sc.exe config DusmSvc start=disabled
-sc.exe config SensorService start=disabled
 sc.exe config AppMgmt start= disabled
-sc.exe config BITS start= disabled
 sc.exe config DevicesFlowUserSvc start= disabled
-sc.exe config DeviceAssociationService start= disabled
-sc.exe config DispBrokerDesktopSvc start= disabled
 sc.exe config DsSvc start= disabled
 sc.exe config ftpsvc start= disabled
 sc.exe config LanmanServer start= disabled
 sc.exe config hidserv start= disabled
-sc.exe config wcncsvc start= disabled
 sc.exe config TextInputManagementService start= disabled
 Stop-Service "WSearch"
 Set-Service "WSearch" -StartupType Disabled
