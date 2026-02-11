@@ -1,6 +1,6 @@
 #ДЛЯ АДМИНИСТРАТОРА (System Context)
 #1. СЕТЕВЫЕ НАСТРОЙКИ
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 70 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d 4294967295 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 64 /f
@@ -11,6 +11,7 @@ powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
 #2. СИСТЕМНЫЕ ПОЛИТИКИ
 bcdedit /set `{current`} BootMenuPolicy Legacy
+powercfg -h off
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
@@ -42,10 +43,8 @@ Stop-Service "SysMain"
 Set-Service "SysMain" -StartupType Disabled
 sc.exe config DiagTrack start= disabled
 
-sc.exe config NPSMSvc_237c2c start= disabled
 sc.exe config TextInputManagementService start= disabled
 sc.exe config whesvc start= disabled
-sc.exe config WSAFabricSvc start= disabled
 sc.exe config spooler start= disabled
 sc.exe config bthserv start= disabled
 sc.exe config fax start= disabled
@@ -56,7 +55,6 @@ sc.exe config lfsvc start= disabled
 sc.exe config RemoteRegistry start= disabled
 sc.exe config AJRouter start= disabled
 sc.exe config NetTcpPortSharing start= disabled
-sc.exe config WiaRpc start= disabled
 sc.exe config BDESVC start= disabled
 sc.exe config SCardSvr start= disabled
 sc.exe config WpcMonSvc start= disabled
@@ -74,7 +72,6 @@ sc.exe config DevicesFlowUserSvc start= disabled
 sc.exe config DsSvc start= disabled
 sc.exe config ftpsvc start= disabled
 sc.exe config LanmanServer start= disabled
-sc.exe config hidserv start= disabled
 sc.exe config TextInputManagementService start= disabled
 Stop-Service "WSearch"
 Set-Service "WSearch" -StartupType Disabled
@@ -137,6 +134,10 @@ Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.OneDrive" | Remove-AppxPackage
 
 #9. БЕЗОПАСНОСТЬ
+# Отключение сбора данных о печати и наборе текста
+schtasks /change /tn "Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /disable
+# Отключение программы улучшения качества ПО (SQM)
+schtasks /change /tn "Microsoft\Windows\Autochk\Proxy" /disable
 # Отключение рекламных ID
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d 0 /f
 # Отключение синхронизации с облаком
@@ -182,12 +183,13 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
 reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
-reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d "1" /f
 reg add "HKCU\Control Panel\Desktop" /v LowLevelHooksTimeout /t REG_SZ /d "1000" /f
 reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 0 /f
 reg add "HKCU\Control Panel\Desktop" /v UserPreferencesMask /t REG_BINARY /d b012038010000000 /f
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
+reg add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "2000" /f
+
 
 
 
