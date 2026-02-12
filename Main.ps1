@@ -21,61 +21,59 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUp
 
 #3. СЛУЖБЫ (SERVICES)
 sc.exe config DiagTrack start= disabled
-sc.exe stop 
+sc.exe stop DiagTrack 
 sc.exe config NPSMSvc_237c2c start= disabled
-sc.exe stop 
+sc.exe stop NPSMSvc_237c2c
 sc.exe config SSDPSRV start= disabled
-sc.exe stop 
-sc.exe config TextInputManagementService start= disabled
-sc.exe stop 
+sc.exe stop SSDPSRV
 sc.exe config whesvc start= disabled
-sc.exe stop 
+sc.exe stop whesvc
 sc.exe config WSAFabricSvc start= disabled
-sc.exe stop 
+sc.exe stop WSAFabricSvc
 sc.exe config spooler start= disabled
-sc.exe stop 
+sc.exe stop spooler
 sc.exe config bthserv start= disabled
-sc.exe stop 
+sc.exe stop bthserv
 sc.exe config fax start= disabled
-sc.exe stop 
+sc.exe stop fax
 sc.exe config XblAuthManager start= disabled
-sc.exe stop 
+sc.exe stop XblAuthManager
 sc.exe config XblGameSave start= disabled
-sc.exe stop 
+sc.exe stop XblGameSave
 sc.exe config XboxNetApiSvc start= disabled
-sc.exe stop 
+sc.exe stop XboxNetApiSvc
 sc.exe config lfsvc start= disabled
-sc.exe stop 
+sc.exe stop lfsvc
 sc.exe config RemoteRegistry start= disabled
-sc.exe stop 
+sc.exe stop RemoteRegistry
 sc.exe config AJRouter start= disabled
-sc.exe stop 
+sc.exe stop AJRouter
 sc.exe config NetTcpPortSharing start= disabled
-sc.exe stop 
+sc.exe stop NetTcpPortSharing
 sc.exe config WiaRpc start= disabled
-sc.exe stop 
+sc.exe stop WiaRpc
 sc.exe config BDESVC start= disabled
-sc.exe stop 
+sc.exe stop BDESVC
 sc.exe config SCardSvr start= disabled
-sc.exe stop 
+sc.exe stop SCardSvr
 sc.exe config WpcMonSvc start= disabled
-sc.exe stop 
+sc.exe stop WpcMonSvc
 sc.exe config HvHost start= disabled
-sc.exe stop 
+sc.exe stop HvHost
 sc.exe config Browser start= disabled
-sc.exe stop 
+sc.exe stop Browser
 sc.exe config WMPNetworkSvc start= disabled
-sc.exe stop 
+sc.exe stop WMPNetworkSvc
 sc.exe config SensorDataService start= disabled
-sc.exe stop 
+sc.exe stop SensorDataService
 sc.exe config SensrSvc start= disabled
-sc.exe stop 
+sc.exe stop SensrSvc
 sc.exe config RmSvc start= disabled
-sc.exe stop 
+sc.exe stop RmSvc
 sc.exe config SstpSvc start= disabled
-sc.exe stop 
+sc.exe stop SstpSvc
 sc.exe config lmhosts start= disabled
-sc.exe stop 
+sc.exe stop lmhosts
 
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
