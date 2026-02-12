@@ -197,3 +197,83 @@ sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
 sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
 sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
 sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
+
+
+
+
+
+
+
+
+# Завершить ВСЕ процессы Edge
+Get-Process -Name "*edge*" -ErrorAction SilentlyContinue | Stop-Process -Force -Verbose
+
+# Дополнительно завершить связанные процессы
+Get-Process -Name "*msedge*", "*edge*", "*MicrosoftEdge*" -ErrorAction SilentlyContinue | Stop-Process -Force
+# Теперь удаляем пакеты
+$edgePackages = Get-AppxPackage -AllUsers | Where-Object {
+    $_.Name -like "*Edge*" -and 
+    $_.Name -notlike "*WebExperience*" -and
+    $_.Name -notlike "*WebView*"
+}
+
+# Принудительное завершение через taskkill
+taskkill /f /im msedge.exe /t
+taskkill /f /im MicrosoftEdge.exe /t
+taskkill /f /im edge.exe /t
+
+# Через PowerShell альтернативно
+Stop-Process -Name "msedge" -Force -ErrorAction SilentlyContinue
+
+$edgePackages | ForEach-Object {
+    Write-Host "Удаляем: $($_.PackageFullName)"
+    Remove-AppxPackage -Package $_.PackageFullName -AllUsers -Verbose
+}
+# Временно отключить службу Edge Update
+Stop-Service -Name "EdgeUpdate" -Force -ErrorAction SilentlyContinue
+Set-Service -Name "EdgeUpdate" -StartupType Manual -ErrorAction SilentlyContinue
+
+cd "C:\Program Files (x86)\Microsoft"
+Remove-Item -Path "Edge" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "EdgeCore" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "EdgeUpdate" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "EdgeWebView" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "Temp" -Recurse -Force -ErrorAction SilentlyContinue
+# Удалить файлы Edge (после завершения процессов)
+Remove-Item -Path "C:\Program Files (x86)\Microsoft\Edge" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Edge" -Recurse -Force -ErrorAction SilentlyContinue
+
+
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable  
+
+sc.exe stop SysMain; sc.exe config SysMain start= disabled
+sc.exe stop spooler; sc.exe config spooler start= disabled
+sc.exe stop bthserv; sc.exe config bthserv start= disabled
+sc.exe stop fax; sc.exe config fax start= disabled
+sc.exe stop XblAuthManager; sc.exe config XblAuthManager start= disabled
+sc.exe stop XblGameSave; sc.exe config XblGameSave start= disabled
+sc.exe stop XboxNetApiSvc; sc.exe config XboxNetApiSvc start= disabled
+sc.exe stop RemoteRegistry; sc.exe config RemoteRegistry start= disabled
+sc.exe stop AJRouter; sc.exe config AJRouter start= disabled
+sc.exe stop NetTcpPortSharing; sc.exe config NetTcpPortSharing start= disabled
+sc.exe stop WiaRpc; sc.exe config WiaRpc start= disabled
+sc.exe stop BDESVC; sc.exe config BDESVC start= disabled
+sc.exe stop TabletInputService; sc.exe config TabletInputService start= disabled
+sc.exe stop TouchKeyboardAndHandwritingPanelService; sc.exe config TouchKeyboardAndHandwritingPanelService start= disabled
+sc.exe stop WSearch; sc.exe config WSearch start= disabled
+sc.exe stop SCardSvr; sc.exe config SCardSvr start= disabled
+sc.exe stop WpcMonSvc; sc.exe config WpcMonSvc start= disabled
+sc.exe stop HvHost; sc.exe config HvHost start= disabled
+sc.exe stop Browser; sc.exe config Browser start= disabled
+sc.exe stop WMPNetworkSvc; sc.exe config WMPNetworkSvc start= disabled
+sc.exe stop DiagTrack; sc.exe config DiagTrack start= disabled
+sc.exe stop SstpSvc; sc.exe config SstpSvc start= disabled
+sc.exe stop lmhosts; sc.exe config lmhosts start= disabled
+
+
+
+
+
+
+
