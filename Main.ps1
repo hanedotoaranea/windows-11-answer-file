@@ -19,7 +19,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableInventor
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /t REG_DWORD /d 1 /f
 
-#3. СЛУЖБЫ (SERVICES)
+#3. СЛУЖБЫ (SERVICES) - ОСНОВНОЙ БЛОК
 sc.exe config DiagTrack start= disabled
 sc.exe stop DiagTrack 
 sc.exe config NPSMSvc_237c2c start= disabled
@@ -62,10 +62,6 @@ sc.exe config Browser start= disabled
 sc.exe stop Browser
 sc.exe config WMPNetworkSvc start= disabled
 sc.exe stop WMPNetworkSvc
-sc.exe config SensorDataService start= disabled
-sc.exe stop SensorDataService
-sc.exe config SensrSvc start= disabled
-sc.exe stop SensrSvc
 sc.exe config RmSvc start= disabled
 sc.exe stop RmSvc
 sc.exe config SstpSvc start= disabled
@@ -159,6 +155,7 @@ reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
+#8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ)
 sc.exe config ALG start= disabled; sc.exe stop ALG
 sc.exe config ApxSvc start= disabled; sc.exe stop ApxSvc
 sc.exe config autotimesvc start= disabled; sc.exe stop autotimesvc
@@ -167,8 +164,6 @@ sc.exe config brave start= disabled; sc.exe stop brave
 sc.exe config bravem start= disabled; sc.exe stop bravem
 sc.exe config BTAGService start= disabled; sc.exe stop BTAGService
 sc.exe config BthAvctpSvc start= disabled; sc.exe stop BthAvctpSvc
-sc.exe config bthserv start= disabled; sc.exe stop bthserv
-sc.exe config DiagTrack start= disabled; sc.exe stop DiagTrack
 sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
 sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
 sc.exe config EFS start= disabled; sc.exe stop EFS
@@ -185,7 +180,6 @@ sc.exe config MapsBroker start= disabled; sc.exe stop MapsBroker
 sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
 sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
 sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
-sc.exe config NetTcpPortSharing start= disabled; sc.exe stop NetTcpPortSharing
 sc.exe config PcaSvc start= disabled; sc.exe stop PcaSvc
 sc.exe config PhoneSvc start= disabled; sc.exe stop PhoneSvc
 sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
@@ -194,10 +188,7 @@ sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBroke
 sc.exe config RasAuto start= disabled; sc.exe stop RasAuto
 sc.exe config refsdedupsvc start= disabled; sc.exe stop refsdedupsvc
 sc.exe config RemoteAccess start= disabled; sc.exe stop RemoteAccess
-sc.exe config RemoteRegistry start= disabled; sc.exe stop RemoteRegistry
 sc.exe config RetailDemo start= disabled; sc.exe stop RetailDemo
-sc.exe config RmSvc start= disabled; sc.exe stop RmSvc
-sc.exe config SCardSvr start= disabled; sc.exe stop SCardSvr
 sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
 sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
 sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
@@ -208,7 +199,6 @@ sc.exe config smphost start= disabled; sc.exe stop smphost
 sc.exe config SmsRouter start= disabled; sc.exe stop SmsRouter
 sc.exe config SNMPTrap start= disabled; sc.exe stop SNMPTrap
 sc.exe config ssh-agent start= disabled; sc.exe stop ssh-agent
-sc.exe config SstpSvc start= disabled; sc.exe stop SstpSvc
 sc.exe config svsvc start= disabled; sc.exe stop svsvc
 sc.exe config TroubleshootingSvc start= disabled; sc.exe stop TroubleshootingSvc
 sc.exe config tzautoupdate start= disabled; sc.exe stop tzautoupdate
@@ -227,12 +217,5 @@ sc.exe config Wecsvc start= disabled; sc.exe stop Wecsvc
 sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
 sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
 sc.exe config wisvc start= disabled; sc.exe stop wisvc
-sc.exe config WpcMonSvc start= disabled; sc.exe stop WpcMonSvc
 sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
-sc.exe config XblAuthManager start= disabled; sc.exe stop XblAuthManager
-sc.exe config XblGameSave start= disabled; sc.exe stop XblGameSave
 sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
-sc.exe config XboxNetApiSvc start= disabled; sc.exe stop XboxNetApiSvc
-
-
-
