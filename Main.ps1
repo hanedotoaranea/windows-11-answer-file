@@ -202,7 +202,6 @@ sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
 sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
 sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
 sc.exe config SensorDataService start= disabled; sc.exe stop SensorDataService
-sc.exe config SensorService start= disabled; sc.exe stop SensorService
 sc.exe config SensrSvc start= disabled; sc.exe stop SensrSvc
 sc.exe config shpamsvc start= disabled; sc.exe stop shpamsvc
 sc.exe config smphost start= disabled; sc.exe stop smphost
