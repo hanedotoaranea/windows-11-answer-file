@@ -156,17 +156,8 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v E
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
 #8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ)
-sc.exe config ALG start= disabled; sc.exe stop ALG
-sc.exe config ApxSvc start= disabled; sc.exe stop ApxSvc
-sc.exe config autotimesvc start= disabled; sc.exe stop autotimesvc
-sc.exe config AxInstSV start= disabled; sc.exe stop AxInstSV
-sc.exe config brave start= disabled; sc.exe stop brave
-sc.exe config bravem start= disabled; sc.exe stop bravem
-sc.exe config BTAGService start= disabled; sc.exe stop BTAGService
-sc.exe config BthAvctpSvc start= disabled; sc.exe stop BthAvctpSvc
 sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
 sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
-sc.exe config EFS start= disabled; sc.exe stop EFS
 sc.exe config fhsvc start= disabled; sc.exe stop fhsvc
 sc.exe config FrameServer start= disabled; sc.exe stop FrameServer
 sc.exe config FrameServerMonitor start= disabled; sc.exe stop FrameServerMonitor
