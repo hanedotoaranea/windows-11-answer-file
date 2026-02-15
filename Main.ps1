@@ -200,80 +200,55 @@ sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
 
 
 
+# 1. СНОСИМ EDGE ПОД КОРЕНЬ
+Write-Host "--- УДАЛЕНИЕ MICROSOFT EDGE ---" -ForegroundColor Red
+$edgeProcs = "msedge", "MicrosoftEdge", "edge", "EdgeUpdate"
+foreach ($proc in $edgeProcs) {
+    Get-Process -Name $proc -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+taskkill /f /im msedge.exe /t /fi "status eq running" 2>$null
 
+# Удаляем Appx пакеты (кроме WebView2, чтобы не сдох Discord/Telegram)
+Get-AppxPackage -AllUsers | Where-Object {$_.Name -like "*Edge*" -and $_.Name -notlike "*WebView*"} | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
 
-
-
-
-# Завершить ВСЕ процессы Edge
-Get-Process -Name "*edge*" -ErrorAction SilentlyContinue | Stop-Process -Force -Verbose
-
-# Дополнительно завершить связанные процессы
-Get-Process -Name "*msedge*", "*edge*", "*MicrosoftEdge*" -ErrorAction SilentlyContinue | Stop-Process -Force
-# Теперь удаляем пакеты
-$edgePackages = Get-AppxPackage -AllUsers | Where-Object {
-    $_.Name -like "*Edge*" -and 
-    $_.Name -notlike "*WebExperience*" -and
-    $_.Name -notlike "*WebView*"
+# Чистим папки (Забираем права у системы через takeown)
+$edgePaths = @(
+    "C:\Program Files (x86)\Microsoft\Edge",
+    "C:\Program Files (x86)\Microsoft\EdgeCore",
+    "C:\Program Files (x86)\Microsoft\EdgeUpdate",
+    "$env:LOCALAPPDATA\Microsoft\Edge"
+)
+foreach ($path in $edgePaths) {
+    if (Test-Path $path) {
+        takeown /f $path /r /d y >$null
+        icacls $path /grant administrators:F /t >$null
+        Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Удалено: $path" -ForegroundColor Yellow
+    }
 }
 
-# Принудительное завершение через taskkill
-taskkill /f /im msedge.exe /t
-taskkill /f /im MicrosoftEdge.exe /t
-taskkill /f /im edge.exe /t
+# 2. ВЫРУБАЕМ ВСЕ СЛУЖБЫ (Твой полный список + мои правки)
+Write-Host "--- ОТКЛЮЧЕНИЕ СЛУЖБ ---" -ForegroundColor Red
+$allServices = @(
+    "WSearch", "spooler", "bthserv", "SSDPSRV", "lmhosts", "WiaRpc", 
+    "TabletInputService", "TouchKeyboardAndHandwritingPanelService",
+    "SysMain", "DiagTrack", "XblAuthManager", "XblGameSave", "XboxNetApiSvc", 
+    "RemoteRegistry", "Fax", "AJRouter", "NetTcpPortSharing", "BDESVC", 
+    "SCardSvr", "WpcMonSvc", "HvHost", "Browser", "WMPNetworkSvc", "SstpSvc"
+)
 
-# Через PowerShell альтернативно
-Stop-Process -Name "msedge" -Force -ErrorAction SilentlyContinue
-
-$edgePackages | ForEach-Object {
-    Write-Host "Удаляем: $($_.PackageFullName)"
-    Remove-AppxPackage -Package $_.PackageFullName -AllUsers -Verbose
+foreach ($svc in $allServices) {
+    if (Get-Service -Name $svc -ErrorAction SilentlyContinue) {
+        Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
+        Set-Service -Name $svc -StartupType Disabled
+        Write-Host "Отключено: $svc" -ForegroundColor Gray
+    }
 }
-# Временно отключить службу Edge Update
-Stop-Service -Name "EdgeUpdate" -Force -ErrorAction SilentlyContinue
-Set-Service -Name "EdgeUpdate" -StartupType Manual -ErrorAction SilentlyContinue
 
-cd "C:\Program Files (x86)\Microsoft"
-Remove-Item -Path "Edge" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "EdgeCore" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "EdgeUpdate" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "EdgeWebView" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "Temp" -Recurse -Force -ErrorAction SilentlyContinue
-# Удалить файлы Edge (после завершения процессов)
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\Edge" -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\Edge" -Recurse -Force -ErrorAction SilentlyContinue
+# 3. ПЛАНИРОВЩИК И ЛИМИТЫ
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
+reg add "HKLM\SOFTWARE\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f
 
-
-schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
-schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable  
-
-sc.exe stop SysMain; sc.exe config SysMain start= disabled
-sc.exe stop spooler; sc.exe config spooler start= disabled
-sc.exe stop bthserv; sc.exe config bthserv start= disabled
-sc.exe stop fax; sc.exe config fax start= disabled
-sc.exe stop XblAuthManager; sc.exe config XblAuthManager start= disabled
-sc.exe stop XblGameSave; sc.exe config XblGameSave start= disabled
-sc.exe stop XboxNetApiSvc; sc.exe config XboxNetApiSvc start= disabled
-sc.exe stop RemoteRegistry; sc.exe config RemoteRegistry start= disabled
-sc.exe stop AJRouter; sc.exe config AJRouter start= disabled
-sc.exe stop NetTcpPortSharing; sc.exe config NetTcpPortSharing start= disabled
-sc.exe stop WiaRpc; sc.exe config WiaRpc start= disabled
-sc.exe stop BDESVC; sc.exe config BDESVC start= disabled
-sc.exe stop TabletInputService; sc.exe config TabletInputService start= disabled
-sc.exe stop TouchKeyboardAndHandwritingPanelService; sc.exe config TouchKeyboardAndHandwritingPanelService start= disabled
-sc.exe stop WSearch; sc.exe config WSearch start= disabled
-sc.exe stop SCardSvr; sc.exe config SCardSvr start= disabled
-sc.exe stop WpcMonSvc; sc.exe config WpcMonSvc start= disabled
-sc.exe stop HvHost; sc.exe config HvHost start= disabled
-sc.exe stop Browser; sc.exe config Browser start= disabled
-sc.exe stop WMPNetworkSvc; sc.exe config WMPNetworkSvc start= disabled
-sc.exe stop DiagTrack; sc.exe config DiagTrack start= disabled
-sc.exe stop SstpSvc; sc.exe config SstpSvc start= disabled
-sc.exe stop lmhosts; sc.exe config lmhosts start= disabled
-
-
-
-
-
-
+Write-Host "--- ГОТОВО. СИСТЕМА ЗАЧИЩЕНА. ПЕРЕЗАГРУЗИСЬ ---" -ForegroundColor Magenta
 
