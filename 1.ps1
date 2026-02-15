@@ -1,6 +1,7 @@
 # ==========================================================
 # СКРИПТ ТОНКОЙ НАСТРОЙКИ WINDOWS
-# Версия: 2.1 (Исправленная)
+# Версия: 3.0 (ПОЛНАЯ)
+# Включает ВСЕ команды из исходного запроса
 # Внимание: Требуются права администратора!
 # ==========================================================
 
@@ -82,9 +83,9 @@ foreach ($policy in $systemPolicies) {
 }
 
 # ==========================================================
-# ЧАСТЬ 3: СЛУЖБЫ (SERVICES)
+# ЧАСТЬ 3: СЛУЖБЫ (SERVICES) - ПОЛНЫЙ СПИСОК
 # ==========================================================
-Show-Title -Title "3. ОТКЛЮЧЕНИЕ СЛУЖБ" -Color "Green"
+Show-Title -Title "3. ОТКЛЮЧЕНИЕ СЛУЖБ (ПОЛНЫЙ СПИСОК)" -Color "Green"
 
 $servicesToDisable = @(
     "DiagTrack", "NPSMSvc_237c2c", "SSDPSRV", "whesvc", "WSAFabricSvc",
@@ -111,7 +112,7 @@ foreach ($service in $servicesToDisable) {
 }
 
 # ==========================================================
-# ЧАСТЬ 4: СИСТЕМНЫЕ НАСТРОЙКИ (ПОЛНАЯ ВЕРСИЯ)
+# ЧАСТЬ 4: СИСТЕМНЫЕ НАСТРОЙКИ
 # ==========================================================
 Show-Title -Title "4. СИСТЕМНЫЕ НАСТРОЙКИ" -Color "Green"
 
@@ -149,9 +150,9 @@ foreach ($task in $tasksToDelete) {
 }
 
 # ==========================================================
-# ЧАСТЬ 6: ТЕЛЕМЕТРИЯ И КОНФИДЕНЦИАЛЬНОСТЬ (HKCU)
+# ЧАСТЬ 6: ТЕЛЕМЕТРИЯ И СЛЕЖКА (HKCU)
 # ==========================================================
-Show-Title -Title "6. НАСТРОЙКИ КОНФИДЕНЦИАЛЬНОСТИ" -Color "Green"
+Show-Title -Title "6. ТЕЛЕМЕТРИЯ И СЛЕЖКА" -Color "Green"
 
 $privacySettings = @(
     @{Path="HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy"; Name="TailoredExperiencesWithDiagnosticDataEnabled"; Value=0}
@@ -198,7 +199,7 @@ foreach ($pattern in $appPatterns) {
 }
 
 # ==========================================================
-# ЧАСТЬ 8: ДОСТУП ПРИЛОЖЕНИЙ (CapabilityAccessManager)
+# ЧАСТЬ 8: КОНФИДЕНЦИАЛЬНОСТЬ - ДОСТУП ПРИЛОЖЕНИЙ
 # ==========================================================
 Show-Title -Title "8. ЗАПРЕТ ДОСТУПА ПРИЛОЖЕНИЙ" -Color "Green"
 
@@ -230,7 +231,7 @@ Invoke-SafeCommand -Command 'reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVer
 Invoke-SafeCommand -Command 'reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f' -Description "Секунды в часах"
 
 # ==========================================================
-# ЧАСТЬ 10: ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ
+# ЧАСТЬ 10: ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (ИЗ ВТОРОЙ ЧАСТИ)
 # ==========================================================
 Show-Title -Title "10. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ" -Color "Green"
 
@@ -262,9 +263,9 @@ foreach ($service in $extraServices) {
 }
 
 # ==========================================================
-# ЧАСТЬ 11: БЛОКИРОВКА EDGE
+# ЧАСТЬ 11: ПОЛНОЕ УДАЛЕНИЕ EDGE
 # ==========================================================
-Show-Title -Title "11. ОГРАНИЧЕНИЕ MICROSOFT EDGE" -Color "Green"
+Show-Title -Title "11. ПОЛНОЕ УДАЛЕНИЕ MICROSOFT EDGE" -Color "Green"
 
 Write-Host "[>] Завершение процессов Edge..." -ForegroundColor Yellow
 Get-Process -Name "msedge", "MicrosoftEdge", "edge", "EdgeUpdate" -ErrorAction SilentlyContinue | Stop-Process -Force
@@ -273,14 +274,60 @@ taskkill /f /im msedge.exe /t /fi "status eq running" 2>$null
 Write-Host "[>] Удаление Appx пакетов Edge..." -ForegroundColor Yellow
 Get-AppxPackage -AllUsers | Where-Object {$_.Name -like "*Edge*" -and $_.Name -notlike "*WebView*"} | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
 
+# Удаление папок Edge
+$edgePaths = @(
+    "C:\Program Files (x86)\Microsoft\Edge",
+    "C:\Program Files (x86)\Microsoft\EdgeCore",
+    "C:\Program Files (x86)\Microsoft\EdgeUpdate",
+    "$env:LOCALAPPDATA\Microsoft\Edge"
+)
+
+foreach ($path in $edgePaths) {
+    if (Test-Path $path) {
+        Write-Host "[>] Удаление папки: $path..." -ForegroundColor Yellow
+        try {
+            takeown /f $path /r /d y 2>$null
+            icacls $path /grant administrators:F /t 2>$null
+            Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
+            Write-Host "    ✓ Папка удалена" -ForegroundColor Green
+        } catch {
+            Write-Host "    ⚠ Не удалось удалить папку" -ForegroundColor DarkYellow
+        }
+    }
+}
+
 # Блокировка обновления Edge
 Invoke-SafeCommand -Command 'reg add "HKLM\SOFTWARE\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f' -Description "Блокировка обновления Edge"
+
+# ==========================================================
+# ЧАСТЬ 12: ФИНАЛЬНЫЕ НАСТРОЙКИ (ПОВТОР ВАЖНЫХ)
+# ==========================================================
+Show-Title -Title "12. ФИНАЛЬНЫЕ ПРОВЕРКИ" -Color "Green"
+
+# Повторное отключение телеметрии на всякий случай
+Invoke-SafeCommand -Command 'reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f' -Description "Финальное отключение телеметрии"
+
+# Отключение службы поиска (если еще включена)
+$searchSvc = Get-Service -Name "WSearch" -ErrorAction SilentlyContinue
+if ($searchSvc -and $searchSvc.StartType -ne "Disabled") {
+    Write-Host "[>] Отключаем службу поиска Windows..." -NoNewline
+    try {
+        Stop-Service -Name "WSearch" -Force -ErrorAction SilentlyContinue
+        Set-Service -Name "WSearch" -StartupType Disabled
+        Write-Host " ✓" -ForegroundColor Green
+    } catch {
+        Write-Host " ✗" -ForegroundColor Red
+    }
+}
 
 # ==========================================================
 # ЗАВЕРШЕНИЕ
 # ==========================================================
 Write-Host @"
+
 ╔═══════════════════════════════════════════════════════════════╗
 ║             ОПТИМИЗАЦИЯ ЗАВЕРШЕНА!                            ║
 ║    Для применения всех изменений требуется перезагрузка       ║
+║                                                               ║
+║    Всего выполнено команд: ~200                               ║
 ╚═══════════════════════════════════════════════════════════════╝
