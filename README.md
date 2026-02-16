@@ -11,6 +11,6 @@ https://schneegans.de/windows/unattend-generator/
 Move the autounnated.xml file to a bootable USB flash drive with original Windows 10 or Windows 11 images.
 [![All releases](https://img.shields.io/github/v/release/hanedotoaranea/windows-11-answer-file?include_prereleases&style=for-the-badge&label=All+releases)](https://github.com/hanedotoaranea/windows-11-answer-file/releases)
 [![Repo size](https://img.shields.io/github/repo-size/hanedotoaranea/windows-11-answer-file?style=for-the-badge)](https://github.com/hanedotoaranea/windows-11-answer-file)
-![img102](https://github.com/user-attachments/assets/8ad88e90-72cc-4382-b097-0bb44e076b99)
+
 
 
