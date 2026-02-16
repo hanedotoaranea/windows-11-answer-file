@@ -14,3 +14,4 @@ Move the autounnated.xml file to a bootable USB flash drive with original Window
 
 
 
+![img102](https://github.com/user-attachments/assets/8ad88e90-72cc-4382-b097-0bb44e076b99)
