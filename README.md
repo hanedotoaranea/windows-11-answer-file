@@ -13,7 +13,4 @@ Move the autounnated.xml file to a bootable USB flash drive with original Window
 [![Repo size](https://img.shields.io/github/repo-size/hanedotoaranea/windows-11-answer-file?style=for-the-badge)](https://github.com/hanedotoaranea/windows-11-answer-file)
 ![img102](https://github.com/user-attachments/assets/8ad88e90-72cc-4382-b097-0bb44e076b99)
 
-<img width="3840" height="2160" alt="1596275226_imagesbase ru" src="https://github.com/user-attachments/assets/09217eb1-dd24-4102-aa2a-63da1c7f2169" />
-
-
 
