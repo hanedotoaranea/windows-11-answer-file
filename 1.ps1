@@ -1,4 +1,4 @@
-мне нужно сделать скрипт из этого #ДЛЯ АДМИНИСТРАТОРА (System Context)
+#ДЛЯ АДМИНИСТРАТОРА (System Context)
 #1. СЕТЕВЫЕ НАСТРОЙКИ
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d ffffffff /f
@@ -121,4 +121,133 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments" /v "Value" /t REG_SZ /d "Deny" /f
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAcce
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\camera" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\accountInfo" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\calendar" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\callHistory" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\messaging" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\otherDevices" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\backgroundApps" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\downloadsFolder" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documents" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\pictures" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videos" /v "Value" /t REG_SZ /d "Deny" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\fileSystem" /v "Value" /t REG_SZ /d "Deny" /f
+
+#2. НАСТРОЙКИ ИНТЕРФЕЙСА
+reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
+reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d "1" /f
+reg add "HKCU\Control Panel\Desktop" /v LowLevelHooksTimeout /t REG_SZ /d "1000" /f
+reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 0 /f
+reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
+
+#8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ И БЕЗ ОПАСНЫХ)
+sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
+sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
+sc.exe config fhsvc start= disabled; sc.exe stop fhsvc
+sc.exe config GameInputSvc start= disabled; sc.exe stop GameInputSvc
+sc.exe config icssvc start= disabled; sc.exe stop icssvc
+sc.exe config InventorySvc start= disabled; sc.exe stop InventorySvc
+sc.exe config ipfsvc start= disabled; sc.exe stop ipfsvc
+sc.exe config lltdsvc start= disabled; sc.exe stop lltdsvc
+sc.exe config LxpSvc start= disabled; sc.exe stop LxpSvc
+sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
+sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
+sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
+sc.exe config PcaSvc start= disabled; sc.exe stop PcaSvc
+sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
+sc.exe config PrintNotify start= disabled; sc.exe stop PrintNotify
+sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBrokerService
+sc.exe config RasAuto start= disabled; sc.exe stop RasAuto
+sc.exe config refsdedupsvc start= disabled; sc.exe stop refsdedupsvc
+sc.exe config RemoteAccess start= disabled; sc.exe stop RemoteAccess
+sc.exe config RetailDemo start= disabled; sc.exe stop RetailDemo
+sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
+sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
+sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
+sc.exe config shpamsvc start= disabled; sc.exe stop shpamsvc
+sc.exe config smphost start= disabled; sc.exe stop smphost
+sc.exe config SNMPTrap start= disabled; sc.exe stop SNMPTrap
+sc.exe config ssh-agent start= disabled; sc.exe stop ssh-agent
+sc.exe config svsvc start= disabled; sc.exe stop svsvc
+sc.exe config vmicguestinterface start= disabled; sc.exe stop vmicguestinterface
+sc.exe config vmicheartbeat start= disabled; sc.exe stop vmicheartbeat
+sc.exe config vmickvpexchange start= disabled; sc.exe stop vmickvpexchange
+sc.exe config vmicrdv start= disabled; sc.exe stop vmicrdv
+sc.exe config vmicshutdown start= disabled; sc.exe stop vmicshutdown
+sc.exe config vmictimesync start= disabled; sc.exe stop vmictimesync
+sc.exe config vmicvmsession start= disabled; sc.exe stop vmicvmsession
+sc.exe config vmicvss start= disabled; sc.exe stop vmicvss
+sc.exe config WarpJITSvc start= disabled; sc.exe stop WarpJITSvc
+sc.exe config Wecsvc start= disabled; sc.exe stop Wecsvc
+sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
+sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
+sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
+sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
+
+
+
+# 1. СНОСИМ EDGE ПОД КОРЕНЬ
+Write-Host "--- УДАЛЕНИЕ MICROSOFT EDGE ---" -ForegroundColor Red
+$edgeProcs = "msedge", "MicrosoftEdge", "edge", "EdgeUpdate"
+foreach ($proc in $edgeProcs) {
+    Get-Process -Name $proc -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+taskkill /f /im msedge.exe /t /fi "status eq running" 2>$null
+
+# Удаляем Appx пакеты (кроме WebView2, чтобы не сдох Discord/Telegram)
+Get-AppxPackage -AllUsers | Where-Object {$_.Name -like "*Edge*" -and $_.Name -notlike "*WebView*"} | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+
+# Чистим папки (Забираем права у системы через takeown)
+$edgePaths = @(
+    "C:\Program Files (x86)\Microsoft\Edge",
+    "C:\Program Files (x86)\Microsoft\EdgeCore",
+    "C:\Program Files (x86)\Microsoft\EdgeUpdate",
+    "$env:LOCALAPPDATA\Microsoft\Edge"
+)
+foreach ($path in $edgePaths) {
+    if (Test-Path $path) {
+        takeown /f $path /r /d y >$null
+        icacls $path /grant administrators:F /t >$null
+        Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
+        Write-Host "Удалено: $path" -ForegroundColor Yellow
+    }
+}
+
+# 2. ВЫРУБАЕМ ВСЕ СЛУЖБЫ (Твой полный список + мои правки)
+Write-Host "--- ОТКЛЮЧЕНИЕ СЛУЖБ ---" -ForegroundColor Red
+$allServices = @(
+    "WSearch", "spooler", "bthserv", "SSDPSRV", "lmhosts", "WiaRpc", 
+    "TabletInputService", "TouchKeyboardAndHandwritingPanelService",
+    "SysMain", "DiagTrack", "XblAuthManager", "XblGameSave", "XboxNetApiSvc", 
+    "RemoteRegistry", "Fax", "AJRouter", "NetTcpPortSharing", "BDESVC", 
+    "SCardSvr", "WpcMonSvc", "HvHost", "Browser", "WMPNetworkSvc", "SstpSvc"
+)
+
+foreach ($svc in $allServices) {
+    if (Get-Service -Name $svc -ErrorAction SilentlyContinue) {
+        Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
+        Set-Service -Name $svc -StartupType Disabled
+        Write-Host "Отключено: $svc" -ForegroundColor Gray
+    }
+}
+
+# 3. ПЛАНИРОВЩИК И ЛИМИТЫ
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
+reg add "HKLM\SOFTWARE\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f
+
+Write-Host "--- ГОТОВО. СИСТЕМА ЗАЧИЩЕНА. ПЕРЕЗАГРУЗИСЬ ---" -ForegroundColor Magenta
