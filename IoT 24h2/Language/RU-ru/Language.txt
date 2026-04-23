@@ -1,1 +1,1 @@
- dism /Online /Add-Package /PackagePath:C:\Users\hialicedecline33\Desktop\RU-ru
+ dism /Online /Add-Package /PackagePath:C:\Users\nameuser\Desktop\RU-ru
