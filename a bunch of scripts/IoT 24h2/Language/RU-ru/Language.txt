@@ -1,1 +1,0 @@
- dism /Online /Add-Package /PackagePath:C:\Users\nameuser\Desktop\RU-ru
