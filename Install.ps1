@@ -194,54 +194,6 @@ sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
 sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
 sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
 
-
-
-# 1. СНОСИМ EDGE ПОД КОРЕНЬ
-Write-Host "--- УДАЛЕНИЕ MICROSOFT EDGE ---" -ForegroundColor Red
-$edgeProcs = "msedge", "MicrosoftEdge", "edge", "EdgeUpdate"
-foreach ($proc in $edgeProcs) {
-    Get-Process -Name $proc -ErrorAction SilentlyContinue | Stop-Process -Force
-}
-taskkill /f /im msedge.exe /t /fi "status eq running" 2>$null
-
-# Удаляем Appx пакеты (кроме WebView2, чтобы не сдох Discord/Telegram)
-Get-AppxPackage -AllUsers | Where-Object {$_.Name -like "*Edge*" -and $_.Name -notlike "*WebView*"} | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
-
-# Чистим папки (Забираем права у системы через takeown)
-$edgePaths = @(
-    "C:\Program Files (x86)\Microsoft\Edge",
-    "C:\Program Files (x86)\Microsoft\EdgeCore",
-    "C:\Program Files (x86)\Microsoft\EdgeUpdate",
-    "$env:LOCALAPPDATA\Microsoft\Edge"
-)
-foreach ($path in $edgePaths) {
-    if (Test-Path $path) {
-        takeown /f $path /r /d y >$null
-        icacls $path /grant administrators:F /t >$null
-        Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
-        Write-Host "Удалено: $path" -ForegroundColor Yellow
-    }
-}
-
-# 2. ВЫРУБАЕМ ВСЕ СЛУЖБЫ (Твой полный список + мои правки)
-Write-Host "--- ОТКЛЮЧЕНИЕ СЛУЖБ ---" -ForegroundColor Red
-$allServices = @(
-    "spooler", "bthserv", "SSDPSRV", "lmhosts",
-    "DiagTrack", "XblAuthManager", "XblGameSave", "XboxNetApiSvc", 
-    "RemoteRegistry", "Fax", "AJRouter", "NetTcpPortSharing", "BDESVC", 
-    "SCardSvr", "WpcMonSvc", "HvHost", "Browser", "WMPNetworkSvc", "SstpSvc"
-)
-
-foreach ($svc in $allServices) {
-    if (Get-Service -Name $svc -ErrorAction SilentlyContinue) {
-        Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
-        Set-Service -Name $svc -StartupType Disabled
-        Write-Host "Отключено: $svc" -ForegroundColor Gray
-    }
-}
-
-Write-Host "--- ГОТОВО. СИСТЕМА ЗАЧИЩЕНА. ПЕРЕЗАГРУЗИСЬ ---" -ForegroundColor Magenta
-
 # 3. ПЛАНИРОВЩИК И ЛИМИТЫ
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
