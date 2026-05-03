@@ -1,11 +1,14 @@
-#ДЛЯ АДМИНИСТРАТОРА (System Context)
-#1. СЕТЕВЫЕ НАСТРОЙКИ
+# ============================================
+# SYSTEM CONTEXT — выполняется от имени системы
+# ============================================
+
+# 1. СЕТЕВЫЕ НАСТРОЙКИ
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d ffffffff /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 128 /f
 
-#2. СИСТЕМНЫЕ ПОЛИТИКИ
+# 2. СИСТЕМНЫЕ ПОЛИТИКИ
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
@@ -19,105 +22,105 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableInventor
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /t REG_DWORD /d 1 /f
 
-#3. СЛУЖБЫ (SERVICES) - ОСНОВНОЙ БЛОК
-sc.exe config DiagTrack start= disabled
-sc.exe stop DiagTrack 
-sc.exe config NPSMSvc_237c2c start= disabled
-sc.exe stop NPSMSvc_237c2c
-sc.exe config SSDPSRV start= disabled
-sc.exe stop SSDPSRV
-sc.exe config whesvc start= disabled
-sc.exe stop whesvc
-sc.exe config WSAFabricSvc start= disabled
-sc.exe stop WSAFabricSvc
-sc.exe config spooler start= disabled
-sc.exe stop spooler
-sc.exe config bthserv start= disabled
-sc.exe stop bthserv
-sc.exe config fax start= disabled
-sc.exe stop fax
-sc.exe config XblAuthManager start= disabled
-sc.exe stop XblAuthManager
-sc.exe config XblGameSave start= disabled
-sc.exe stop XblGameSave
-sc.exe config XboxNetApiSvc start= disabled
-sc.exe stop XboxNetApiSvc
-sc.exe config RemoteRegistry start= disabled
-sc.exe stop RemoteRegistry
-sc.exe config AJRouter start= disabled
-sc.exe stop AJRouter
-sc.exe config NetTcpPortSharing start= disabled
-sc.exe stop NetTcpPortSharing
-sc.exe config BDESVC start= disabled
-sc.exe stop BDESVC
-sc.exe config SCardSvr start= disabled
-sc.exe stop SCardSvr
-sc.exe config WpcMonSvc start= disabled
-sc.exe stop WpcMonSvc
-sc.exe config HvHost start= disabled
-sc.exe stop HvHost
-sc.exe config Browser start= disabled
-sc.exe stop Browser
-sc.exe config WMPNetworkSvc start= disabled
-sc.exe stop WMPNetworkSvc
-sc.exe config RmSvc start= disabled
-sc.exe stop RmSvc
-sc.exe config SstpSvc start= disabled
-sc.exe stop SstpSvc
-sc.exe config lmhosts start= disabled
-sc.exe stop lmhosts
+# 3. СЛУЖБЫ (SERVICES) — ОСНОВНОЙ БЛОК
+sc config DiagTrack start= disabled
+sc stop DiagTrack 
+sc config NPSMSvc_237c2c start= disabled
+sc stop NPSMSvc_237c2c
+sc config SSDPSRV start= disabled
+sc stop SSDPSRV
+sc config whesvc start= disabled
+sc stop whesvc
+sc config WSAFabricSvc start= disabled
+sc stop WSAFabricSvc
+sc config spooler start= disabled
+sc stop spooler
+sc config bthserv start= disabled
+sc stop bthserv
+sc config fax start= disabled
+sc stop fax
+sc config XblAuthManager start= disabled
+sc stop XblAuthManager
+sc config XblGameSave start= disabled
+sc stop XblGameSave
+sc config XboxNetApiSvc start= disabled
+sc stop XboxNetApiSvc
+sc config RemoteRegistry start= disabled
+sc stop RemoteRegistry
+sc config AJRouter start= disabled
+sc stop AJRouter
+sc config NetTcpPortSharing start= disabled
+sc stop NetTcpPortSharing
+sc config BDESVC start= disabled
+sc stop BDESVC
+sc config SCardSvr start= disabled
+sc stop SCardSvr
+sc config WpcMonSvc start= disabled
+sc stop WpcMonSvc
+sc config HvHost start= disabled
+sc stop HvHost
+sc config Browser start= disabled
+sc stop Browser
+sc config WMPNetworkSvc start= disabled
+sc stop WMPNetworkSvc
+sc config RmSvc start= disabled
+sc stop RmSvc
+sc config SstpSvc start= disabled
+sc stop SstpSvc
+sc config lmhosts start= disabled
+sc stop lmhosts
 
-#8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ И БЕЗ ОПАСНЫХ)
-sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
-sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
-sc.exe config fhsvc start= disabled; sc.exe stop fhsvc
-sc.exe config GameInputSvc start= disabled; sc.exe stop GameInputSvc
-sc.exe config icssvc start= disabled; sc.exe stop icssvc
-sc.exe config InventorySvc start= disabled; sc.exe stop InventorySvc
-sc.exe config ipfsvc start= disabled; sc.exe stop ipfsvc
-sc.exe config lltdsvc start= disabled; sc.exe stop lltdsvc
-sc.exe config LxpSvc start= disabled; sc.exe stop LxpSvc
-sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
-sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
-sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
-sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
-sc.exe config PrintNotify start= disabled; sc.exe stop PrintNotify
-sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBrokerService
-sc.exe config RasAuto start= disabled; sc.exe stop RasAuto
-sc.exe config refsdedupsvc start= disabled; sc.exe stop refsdedupsvc
-sc.exe config RemoteAccess start= disabled; sc.exe stop RemoteAccess
-sc.exe config RetailDemo start= disabled; sc.exe stop RetailDemo
-sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
-sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
-sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
-sc.exe config shpamsvc start= disabled; sc.exe stop shpamsvc
-sc.exe config smphost start= disabled; sc.exe stop smphost
-sc.exe config SNMPTrap start= disabled; sc.exe stop SNMPTrap
-sc.exe config ssh-agent start= disabled; sc.exe stop ssh-agent
-sc.exe config svsvc start= disabled; sc.exe stop svsvc
-sc.exe config vmicguestinterface start= disabled; sc.exe stop vmicguestinterface
-sc.exe config vmicheartbeat start= disabled; sc.exe stop vmicheartbeat
-sc.exe config vmickvpexchange start= disabled; sc.exe stop vmickvpexchange
-sc.exe config vmicrdv start= disabled; sc.exe stop vmicrdv
-sc.exe config vmicshutdown start= disabled; sc.exe stop vmicshutdown
-sc.exe config vmictimesync start= disabled; sc.exe stop vmictimesync
-sc.exe config vmicvmsession start= disabled; sc.exe stop vmicvmsession
-sc.exe config vmicvss start= disabled; sc.exe stop vmicvss
-sc.exe config WarpJITSvc start= disabled; sc.exe stop WarpJITSvc
-sc.exe config Wecsvc start= disabled; sc.exe stop Wecsvc
-sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
-sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
-sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
-sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
+# 4. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ
+sc config edgeupdate start= disabled & sc stop edgeupdate
+sc config edgeupdatem start= disabled & sc stop edgeupdatem
+sc config fhsvc start= disabled & sc stop fhsvc
+sc config GameInputSvc start= disabled & sc stop GameInputSvc
+sc config icssvc start= disabled & sc stop icssvc
+sc config InventorySvc start= disabled & sc stop InventorySvc
+sc config ipfsvc start= disabled & sc stop ipfsvc
+sc config lltdsvc start= disabled & sc stop lltdsvc
+sc config LxpSvc start= disabled & sc stop LxpSvc
+sc config McpManagementService start= disabled & sc stop McpManagementService
+sc config MSiSCSI start= disabled & sc stop MSiSCSI
+sc config NcaSvc start= disabled & sc stop NcaSvc
+sc config PrintDeviceConfigurationService start= disabled & sc stop PrintDeviceConfigurationService
+sc config PrintNotify start= disabled & sc stop PrintNotify
+sc config PrintScanBrokerService start= disabled & sc stop PrintScanBrokerService
+sc config RasAuto start= disabled & sc stop RasAuto
+sc config refsdedupsvc start= disabled & sc stop refsdedupsvc
+sc config RemoteAccess start= disabled & sc stop RemoteAccess
+sc config RetailDemo start= disabled & sc stop RetailDemo
+sc config ScDeviceEnum start= disabled & sc stop ScDeviceEnum
+sc config SCPolicySvc start= disabled & sc stop SCPolicySvc
+sc config SEMgrSvc start= disabled & sc stop SEMgrSvc
+sc config shpamsvc start= disabled & sc stop shpamsvc
+sc config smphost start= disabled & sc stop smphost
+sc config SNMPTrap start= disabled & sc stop SNMPTrap
+sc config ssh-agent start= disabled & sc stop ssh-agent
+sc config svsvc start= disabled & sc stop svsvc
+sc config vmicguestinterface start= disabled & sc stop vmicguestinterface
+sc config vmicheartbeat start= disabled & sc stop vmicheartbeat
+sc config vmickvpexchange start= disabled & sc stop vmickvpexchange
+sc config vmicrdv start= disabled & sc stop vmicrdv
+sc config vmicshutdown start= disabled & sc stop vmicshutdown
+sc config vmictimesync start= disabled & sc stop vmictimesync
+sc config vmicvmsession start= disabled & sc stop vmicvmsession
+sc config vmicvss start= disabled & sc stop vmicvss
+sc config WarpJITSvc start= disabled & sc stop WarpJITSvc
+sc config Wecsvc start= disabled & sc stop Wecsvc
+sc config wercplsupport start= disabled & sc stop wercplsupport
+sc config WFDSConMgrSvc start= disabled & sc stop WFDSConMgrSvc
+sc config WSAIFabricSvc start= disabled & sc stop WSAIFabricSvc
+sc config XboxGipSvc start= disabled & sc stop XboxGipSvc
 
-#4. СИСТЕМНЫЕ НАСТРОЙКИ
+# 5. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows Search" /v SetupCompletedSuccessfully /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d 0 /f
 fsutil behavior set DisableDeleteNotify 0
 bcdedit /set {current} bootmenupolicy legacy
 
-#5. ЗАДАНИЯ ПЛАНИРОВЩИКА
+# 6. ЗАДАНИЯ ПЛАНИРОВЩИКА
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable
 schtasks /delete /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /f
@@ -127,7 +130,23 @@ schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compat
 schtasks /delete /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /f
 schtasks /delete /tn "\Microsoft\Windows\Windows Error Reporting\QueueReporting" /f
 
-#6. ТЕЛЕМЕТРИЯ И СЛЕЖКА
+# 7. УДАЛЕНИЕ ПРИЛОЖЕНИЙ (БЕЗОПАСНОЕ)
+Get-AppxPackage -AllUsers *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage -AllUsers *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage -AllUsers *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Xbox* | Remove-AppxPackage -ErrorAction SilentlyContinue
+
+
+# ============================================
+# USER CONTEXT — выполняется при входе пользователя
+# ============================================
+
+# 1. ТЕЛЕМЕТРИЯ И КОНФИДЕНЦИАЛЬНОСТЬ
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v TailoredExperiencesWithDiagnosticDataEnabled /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /v AcceptedPrivacyPolicy /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /v HasAccepted /t REG_DWORD /d 0 /f
@@ -141,19 +160,7 @@ reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v RestrictImplicitTextCo
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v RestrictImplicitInkCollection /t REG_DWORD /d 1 /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ActivityFeed" /v EnableActivityFeed /t REG_DWORD /d 0 /f
 
-#7. УДАЛЕНИЕ ПРИЛОЖЕНИЙ
-Get-AppxPackage -AllUsers *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *Xbox* | Remove-AppxPackage -ErrorAction SilentlyContinue
-
-#ДЛЯ ПОЛЬЗОВАТЕЛЯ (User Context)
-#1. КОНФИДЕНЦИАЛЬНОСТЬ - ДОСТУП ПРИЛОЖЕНИЙ
+# 2. ДОСТУП ПРИЛОЖЕНИЙ (ВСЕ DENY)
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\voiceActivation" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d "Deny" /f
@@ -184,7 +191,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videos" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\fileSystem" /v "Value" /t REG_SZ /d "Deny" /f
 
-#2. НАСТРОЙКИ ИНТЕРФЕЙСА
+# 3. НАСТРОЙКИ ИНТЕРФЕЙСА
 reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
 reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d "1" /f
@@ -193,9 +200,13 @@ reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 0 /
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
-# 3. ПЛАНИРОВЩИК И ЛИМИТЫ
+# 4. ПЛАНИРОВЩИК (ПОЛЬЗОВАТЕЛЬСКИЕ ЗАДАЧИ)
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
-reg add "HKLM\SOFTWARE\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f
+
+
+
+
+
 
 
