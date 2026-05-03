@@ -150,7 +150,6 @@ Get-AppxPackage -AllUsers *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyCo
 Get-AppxPackage *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage -AllUsers *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *Bing* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage *Xbox* | Remove-AppxPackage -ErrorAction SilentlyContinue
 
 #ДЛЯ ПОЛЬЗОВАТЕЛЯ (User Context)
