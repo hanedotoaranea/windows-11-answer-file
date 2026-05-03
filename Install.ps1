@@ -48,8 +48,6 @@ sc.exe config AJRouter start= disabled
 sc.exe stop AJRouter
 sc.exe config NetTcpPortSharing start= disabled
 sc.exe stop NetTcpPortSharing
-sc.exe config WiaRpc start= disabled
-sc.exe stop WiaRpc
 sc.exe config BDESVC start= disabled
 sc.exe stop BDESVC
 sc.exe config SCardSvr start= disabled
@@ -166,7 +164,6 @@ sc.exe config LxpSvc start= disabled; sc.exe stop LxpSvc
 sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
 sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
 sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
-sc.exe config PcaSvc start= disabled; sc.exe stop PcaSvc
 sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
 sc.exe config PrintNotify start= disabled; sc.exe stop PrintNotify
 sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBrokerService
@@ -229,9 +226,8 @@ foreach ($path in $edgePaths) {
 # 2. ВЫРУБАЕМ ВСЕ СЛУЖБЫ (Твой полный список + мои правки)
 Write-Host "--- ОТКЛЮЧЕНИЕ СЛУЖБ ---" -ForegroundColor Red
 $allServices = @(
-    "WSearch", "spooler", "bthserv", "SSDPSRV", "lmhosts", "WiaRpc", 
-    "TabletInputService", "TouchKeyboardAndHandwritingPanelService",
-    "SysMain", "DiagTrack", "XblAuthManager", "XblGameSave", "XboxNetApiSvc", 
+    "spooler", "bthserv", "SSDPSRV", "lmhosts",
+    "DiagTrack", "XblAuthManager", "XblGameSave", "XboxNetApiSvc", 
     "RemoteRegistry", "Fax", "AJRouter", "NetTcpPortSharing", "BDESVC", 
     "SCardSvr", "WpcMonSvc", "HvHost", "Browser", "WMPNetworkSvc", "SstpSvc"
 )
