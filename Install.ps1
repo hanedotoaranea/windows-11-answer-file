@@ -34,10 +34,6 @@ sc config whesvc start= disabled
 sc stop whesvc
 sc config WSAFabricSvc start= disabled
 sc stop WSAFabricSvc
-sc config spooler start= disabled
-sc stop spooler
-sc config bthserv start= disabled
-sc stop bthserv
 sc config fax start= disabled
 sc stop fax
 sc config XblAuthManager start= disabled
@@ -52,52 +48,31 @@ sc config AJRouter start= disabled
 sc stop AJRouter
 sc config NetTcpPortSharing start= disabled
 sc stop NetTcpPortSharing
-sc config BDESVC start= disabled
-sc stop BDESVC
-sc config SCardSvr start= disabled
-sc stop SCardSvr
-sc config WpcMonSvc start= disabled
-sc stop WpcMonSvc
 sc config HvHost start= disabled
 sc stop HvHost
 sc config Browser start= disabled
 sc stop Browser
 sc config WMPNetworkSvc start= disabled
 sc stop WMPNetworkSvc
-sc config RmSvc start= disabled
-sc stop RmSvc
-sc config SstpSvc start= disabled
-sc stop SstpSvc
 sc config lmhosts start= disabled
 sc stop lmhosts
 
 # 4. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ
-sc config edgeupdate start= disabled & sc stop edgeupdate
-sc config edgeupdatem start= disabled & sc stop edgeupdatem
 sc config fhsvc start= disabled & sc stop fhsvc
-sc config GameInputSvc start= disabled & sc stop GameInputSvc
 sc config icssvc start= disabled & sc stop icssvc
 sc config InventorySvc start= disabled & sc stop InventorySvc
-sc config ipfsvc start= disabled & sc stop ipfsvc
 sc config lltdsvc start= disabled & sc stop lltdsvc
-sc config LxpSvc start= disabled & sc stop LxpSvc
 sc config McpManagementService start= disabled & sc stop McpManagementService
 sc config MSiSCSI start= disabled & sc stop MSiSCSI
-sc config NcaSvc start= disabled & sc stop NcaSvc
 sc config PrintDeviceConfigurationService start= disabled & sc stop PrintDeviceConfigurationService
-sc config PrintNotify start= disabled & sc stop PrintNotify
-sc config PrintScanBrokerService start= disabled & sc stop PrintScanBrokerService
-sc config RasAuto start= disabled & sc stop RasAuto
 sc config refsdedupsvc start= disabled & sc stop refsdedupsvc
 sc config RemoteAccess start= disabled & sc stop RemoteAccess
 sc config RetailDemo start= disabled & sc stop RetailDemo
-sc config ScDeviceEnum start= disabled & sc stop ScDeviceEnum
 sc config SCPolicySvc start= disabled & sc stop SCPolicySvc
 sc config SEMgrSvc start= disabled & sc stop SEMgrSvc
 sc config shpamsvc start= disabled & sc stop shpamsvc
 sc config smphost start= disabled & sc stop smphost
 sc config SNMPTrap start= disabled & sc stop SNMPTrap
-sc config ssh-agent start= disabled & sc stop ssh-agent
 sc config svsvc start= disabled & sc stop svsvc
 sc config vmicguestinterface start= disabled & sc stop vmicguestinterface
 sc config vmicheartbeat start= disabled & sc stop vmicheartbeat
@@ -107,7 +82,6 @@ sc config vmicshutdown start= disabled & sc stop vmicshutdown
 sc config vmictimesync start= disabled & sc stop vmictimesync
 sc config vmicvmsession start= disabled & sc stop vmicvmsession
 sc config vmicvss start= disabled & sc stop vmicvss
-sc config WarpJITSvc start= disabled & sc stop WarpJITSvc
 sc config Wecsvc start= disabled & sc stop Wecsvc
 sc config wercplsupport start= disabled & sc stop wercplsupport
 sc config WFDSConMgrSvc start= disabled & sc stop WFDSConMgrSvc
@@ -115,11 +89,8 @@ sc config WSAIFabricSvc start= disabled & sc stop WSAIFabricSvc
 sc config XboxGipSvc start= disabled & sc stop XboxGipSvc
 
 # 5. СИСТЕМНЫЕ НАСТРОЙКИ
-reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows Search" /v SetupCompletedSuccessfully /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d 0 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "20000" /f
 fsutil behavior set DisableDeleteNotify 0
-bcdedit /set {current} bootmenupolicy legacy
 
 # 6. ЗАДАНИЯ ПЛАНИРОВЩИКА
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
@@ -195,10 +166,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 # 3. НАСТРОЙКИ ИНТЕРФЕЙСА
 REG DELETE "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
-reg add "HKCU\Control Panel\Desktop" /v AutoEndTasks /t REG_SZ /d "1" /f
-reg add "HKCU\Control Panel\Desktop" /v LowLevelHooksTimeout /t REG_SZ /d "1000" /f
-reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0" /f
+reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 9999 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
 
 # 4. ПЛАНИРОВЩИК (ПОЛЬЗОВАТЕЛЬСКИЕ ЗАДАЧИ)
