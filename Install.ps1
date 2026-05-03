@@ -4,7 +4,7 @@
 
 # 1. СЕТЕВЫЕ НАСТРОЙКИ
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d ffffffff /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d -1 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 128 /f
 
@@ -24,69 +24,69 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUp
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7" /v Attributes /t REG_DWORD /d 2 /f
 
 # 3. СЛУЖБЫ (SERVICES) — ОСНОВНОЙ БЛОК
-sc config DiagTrack start= disabled
-sc stop DiagTrack 
-sc config NPSMSvc_237c2c start= disabled
-sc stop NPSMSvc_237c2c
-sc config SSDPSRV start= disabled
-sc stop SSDPSRV
-sc config whesvc start= disabled
-sc stop whesvc
-sc config WSAFabricSvc start= disabled
-sc stop WSAFabricSvc
-sc config fax start= disabled
-sc stop fax
-sc config XblAuthManager start= disabled
-sc stop XblAuthManager
-sc config XblGameSave start= disabled
-sc stop XblGameSave
-sc config XboxNetApiSvc start= disabled
-sc stop XboxNetApiSvc
-sc config RemoteRegistry start= disabled
-sc stop RemoteRegistry
-sc config AJRouter start= disabled
-sc stop AJRouter
-sc config NetTcpPortSharing start= disabled
-sc stop NetTcpPortSharing
-sc config HvHost start= disabled
-sc stop HvHost
-sc config Browser start= disabled
-sc stop Browser
-sc config WMPNetworkSvc start= disabled
-sc stop WMPNetworkSvc
-sc config lmhosts start= disabled
-sc stop lmhosts
+sc.exe.exe config DiagTrack start= disabled
+sc.exe stop DiagTrack 
+sc.exe config NPSMSvc_237c2c start= disabled
+sc.exe stop NPSMSvc_237c2c
+sc.exe config SSDPSRV start= disabled
+sc.exe stop SSDPSRV
+sc.exe config whesvc start= disabled
+sc.exe stop whesvc
+sc.exe config WSAFabricSvc start= disabled
+sc.exe stop WSAFabricSvc
+sc.exe config fax start= disabled
+sc.exe stop fax
+sc.exe config XblAuthManager start= disabled
+sc.exe stop XblAuthManager
+sc.exe config XblGameSave start= disabled
+sc.exe stop XblGameSave
+sc.exe config XboxNetApiSvc start= disabled
+sc.exe stop XboxNetApiSvc
+sc.exe config RemoteRegistry start= disabled
+sc.exe stop RemoteRegistry
+sc.exe config AJRouter start= disabled
+sc.exe stop AJRouter
+sc.exe config NetTcpPortSharing start= disabled
+sc.exe stop NetTcpPortSharing
+sc.exe config HvHost start= disabled
+sc.exe stop HvHost
+sc.exe config Browser start= disabled
+sc.exe stop Browser
+sc.exe config WMPNetworkSvc start= disabled
+sc.exe stop WMPNetworkSvc
+sc.exe config lmhosts start= disabled
+sc.exe stop lmhosts
 
 # 4. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ
-sc config fhsvc start= disabled & sc stop fhsvc
-sc config icssvc start= disabled & sc stop icssvc
-sc config InventorySvc start= disabled & sc stop InventorySvc
-sc config lltdsvc start= disabled & sc stop lltdsvc
-sc config McpManagementService start= disabled & sc stop McpManagementService
-sc config MSiSCSI start= disabled & sc stop MSiSCSI
-sc config PrintDeviceConfigurationService start= disabled & sc stop PrintDeviceConfigurationService
-sc config refsdedupsvc start= disabled & sc stop refsdedupsvc
-sc config RemoteAccess start= disabled & sc stop RemoteAccess
-sc config RetailDemo start= disabled & sc stop RetailDemo
-sc config SCPolicySvc start= disabled & sc stop SCPolicySvc
-sc config SEMgrSvc start= disabled & sc stop SEMgrSvc
-sc config shpamsvc start= disabled & sc stop shpamsvc
-sc config smphost start= disabled & sc stop smphost
-sc config SNMPTrap start= disabled & sc stop SNMPTrap
-sc config svsvc start= disabled & sc stop svsvc
-sc config vmicguestinterface start= disabled & sc stop vmicguestinterface
-sc config vmicheartbeat start= disabled & sc stop vmicheartbeat
-sc config vmickvpexchange start= disabled & sc stop vmickvpexchange
-sc config vmicrdv start= disabled & sc stop vmicrdv
-sc config vmicshutdown start= disabled & sc stop vmicshutdown
-sc config vmictimesync start= disabled & sc stop vmictimesync
-sc config vmicvmsession start= disabled & sc stop vmicvmsession
-sc config vmicvss start= disabled & sc stop vmicvss
-sc config Wecsvc start= disabled & sc stop Wecsvc
-sc config wercplsupport start= disabled & sc stop wercplsupport
-sc config WFDSConMgrSvc start= disabled & sc stop WFDSConMgrSvc
-sc config WSAIFabricSvc start= disabled & sc stop WSAIFabricSvc
-sc config XboxGipSvc start= disabled & sc stop XboxGipSvc
+sc.exe config fhsvc start= disabled ; sc.exe stop fhsvc
+sc.exe config icssvc start= disabled ; sc.exe stop icssvc
+sc.exe config InventorySvc start= disabled ; sc.exe stop InventorySvc
+sc.exe config lltdsvc start= disabled ; sc.exe stop lltdsvc
+sc.exe config McpManagementService start= disabled ; sc.exe stop McpManagementService
+sc.exe config MSiSCSI start= disabled ; sc.exe stop MSiSCSI
+sc.exe config PrintDeviceConfigurationService start= disabled ; sc.exe stop PrintDeviceConfigurationService
+sc.exe config refsdedupsvc start= disabled ; sc.exe stop refsdedupsvc
+sc.exe config RemoteAccess start= disabled ; sc.exe stop RemoteAccess
+sc.exe config RetailDemo start= disabled ; sc.exe stop RetailDemo
+sc.exe config SCPolicySvc start= disabled ; sc.exe stop SCPolicySvc
+sc.exe config SEMgrSvc start= disabled ; sc.exe stop SEMgrSvc
+sc.exe config shpamsvc start= disabled ; sc.exe stop shpamsvc
+sc.exe config smphost start= disabled ; sc.exe stop smphost
+sc.exe config SNMPTrap start= disabled ; sc.exe stop SNMPTrap
+sc.exe config svsvc start= disabled ; sc.exe stop svsvc
+sc.exe config vmicguestinterface start= disabled ; sc.exe stop vmicguestinterface
+sc.exe config vmicheartbeat start= disabled ; sc.exe stop vmicheartbeat
+sc.exe config vmickvpexchange start= disabled ; sc.exe stop vmickvpexchange
+sc.exe config vmicrdv start= disabled ; sc.exe stop vmicrdv
+sc.exe config vmicshutdown start= disabled ; sc.exe stop vmicshutdown
+sc.exe config vmictimesync start= disabled ; sc.exe stop vmictimesync
+sc.exe config vmicvmsession start= disabled ; sc.exe stop vmicvmsession
+sc.exe config vmicvss start= disabled ; sc.exe stop vmicvss
+sc.exe config Wecsvc start= disabled ; sc.exe stop Wecsvc
+sc.exe config wercplsupport start= disabled ; sc.exe stop wercplsupport
+sc.exe config WFDSConMgrSvc start= disabled ; sc.exe stop WFDSConMgrSvc
+sc.exe config WSAIFabricSvc start= disabled ; sc.exe stop WSAIFabricSvc
+sc.exe config XboxGipSvc start= disabled ; sc.exe stop XboxGipSvc
 
 # 5. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "20000" /f
