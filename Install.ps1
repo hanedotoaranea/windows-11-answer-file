@@ -244,9 +244,11 @@ foreach ($svc in $allServices) {
     }
 }
 
+Write-Host "--- ГОТОВО. СИСТЕМА ЗАЧИЩЕНА. ПЕРЕЗАГРУЗИСЬ ---" -ForegroundColor Magenta
+
 # 3. ПЛАНИРОВЩИК И ЛИМИТЫ
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
 reg add "HKLM\SOFTWARE\Microsoft\EdgeUpdate" /v "DoNotUpdateToEdgeWithChromium" /t REG_DWORD /d 1 /f
 
-Write-Host "--- ГОТОВО. СИСТЕМА ЗАЧИЩЕНА. ПЕРЕЗАГРУЗИСЬ ---" -ForegroundColor Magenta
+
