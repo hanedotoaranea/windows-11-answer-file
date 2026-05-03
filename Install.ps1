@@ -67,6 +67,49 @@ sc.exe stop SstpSvc
 sc.exe config lmhosts start= disabled
 sc.exe stop lmhosts
 
+#8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ И БЕЗ ОПАСНЫХ)
+sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
+sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
+sc.exe config fhsvc start= disabled; sc.exe stop fhsvc
+sc.exe config GameInputSvc start= disabled; sc.exe stop GameInputSvc
+sc.exe config icssvc start= disabled; sc.exe stop icssvc
+sc.exe config InventorySvc start= disabled; sc.exe stop InventorySvc
+sc.exe config ipfsvc start= disabled; sc.exe stop ipfsvc
+sc.exe config lltdsvc start= disabled; sc.exe stop lltdsvc
+sc.exe config LxpSvc start= disabled; sc.exe stop LxpSvc
+sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
+sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
+sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
+sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
+sc.exe config PrintNotify start= disabled; sc.exe stop PrintNotify
+sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBrokerService
+sc.exe config RasAuto start= disabled; sc.exe stop RasAuto
+sc.exe config refsdedupsvc start= disabled; sc.exe stop refsdedupsvc
+sc.exe config RemoteAccess start= disabled; sc.exe stop RemoteAccess
+sc.exe config RetailDemo start= disabled; sc.exe stop RetailDemo
+sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
+sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
+sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
+sc.exe config shpamsvc start= disabled; sc.exe stop shpamsvc
+sc.exe config smphost start= disabled; sc.exe stop smphost
+sc.exe config SNMPTrap start= disabled; sc.exe stop SNMPTrap
+sc.exe config ssh-agent start= disabled; sc.exe stop ssh-agent
+sc.exe config svsvc start= disabled; sc.exe stop svsvc
+sc.exe config vmicguestinterface start= disabled; sc.exe stop vmicguestinterface
+sc.exe config vmicheartbeat start= disabled; sc.exe stop vmicheartbeat
+sc.exe config vmickvpexchange start= disabled; sc.exe stop vmickvpexchange
+sc.exe config vmicrdv start= disabled; sc.exe stop vmicrdv
+sc.exe config vmicshutdown start= disabled; sc.exe stop vmicshutdown
+sc.exe config vmictimesync start= disabled; sc.exe stop vmictimesync
+sc.exe config vmicvmsession start= disabled; sc.exe stop vmicvmsession
+sc.exe config vmicvss start= disabled; sc.exe stop vmicvss
+sc.exe config WarpJITSvc start= disabled; sc.exe stop WarpJITSvc
+sc.exe config Wecsvc start= disabled; sc.exe stop Wecsvc
+sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
+sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
+sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
+sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
+
 #4. СИСТЕМНЫЕ НАСТРОЙКИ
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "2000" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows Search" /v SetupCompletedSuccessfully /t REG_DWORD /d 0 /f
@@ -150,49 +193,6 @@ reg add "HKCU\Control Panel\Desktop" /v LowLevelHooksTimeout /t REG_SZ /d "1000"
 reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 0 /f
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d "0" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
-
-#8. ДОПОЛНИТЕЛЬНЫЕ СЛУЖБЫ (БЕЗ ДУБЛИКАТОВ И БЕЗ ОПАСНЫХ)
-sc.exe config edgeupdate start= disabled; sc.exe stop edgeupdate
-sc.exe config edgeupdatem start= disabled; sc.exe stop edgeupdatem
-sc.exe config fhsvc start= disabled; sc.exe stop fhsvc
-sc.exe config GameInputSvc start= disabled; sc.exe stop GameInputSvc
-sc.exe config icssvc start= disabled; sc.exe stop icssvc
-sc.exe config InventorySvc start= disabled; sc.exe stop InventorySvc
-sc.exe config ipfsvc start= disabled; sc.exe stop ipfsvc
-sc.exe config lltdsvc start= disabled; sc.exe stop lltdsvc
-sc.exe config LxpSvc start= disabled; sc.exe stop LxpSvc
-sc.exe config McpManagementService start= disabled; sc.exe stop McpManagementService
-sc.exe config MSiSCSI start= disabled; sc.exe stop MSiSCSI
-sc.exe config NcaSvc start= disabled; sc.exe stop NcaSvc
-sc.exe config PrintDeviceConfigurationService start= disabled; sc.exe stop PrintDeviceConfigurationService
-sc.exe config PrintNotify start= disabled; sc.exe stop PrintNotify
-sc.exe config PrintScanBrokerService start= disabled; sc.exe stop PrintScanBrokerService
-sc.exe config RasAuto start= disabled; sc.exe stop RasAuto
-sc.exe config refsdedupsvc start= disabled; sc.exe stop refsdedupsvc
-sc.exe config RemoteAccess start= disabled; sc.exe stop RemoteAccess
-sc.exe config RetailDemo start= disabled; sc.exe stop RetailDemo
-sc.exe config ScDeviceEnum start= disabled; sc.exe stop ScDeviceEnum
-sc.exe config SCPolicySvc start= disabled; sc.exe stop SCPolicySvc
-sc.exe config SEMgrSvc start= disabled; sc.exe stop SEMgrSvc
-sc.exe config shpamsvc start= disabled; sc.exe stop shpamsvc
-sc.exe config smphost start= disabled; sc.exe stop smphost
-sc.exe config SNMPTrap start= disabled; sc.exe stop SNMPTrap
-sc.exe config ssh-agent start= disabled; sc.exe stop ssh-agent
-sc.exe config svsvc start= disabled; sc.exe stop svsvc
-sc.exe config vmicguestinterface start= disabled; sc.exe stop vmicguestinterface
-sc.exe config vmicheartbeat start= disabled; sc.exe stop vmicheartbeat
-sc.exe config vmickvpexchange start= disabled; sc.exe stop vmickvpexchange
-sc.exe config vmicrdv start= disabled; sc.exe stop vmicrdv
-sc.exe config vmicshutdown start= disabled; sc.exe stop vmicshutdown
-sc.exe config vmictimesync start= disabled; sc.exe stop vmictimesync
-sc.exe config vmicvmsession start= disabled; sc.exe stop vmicvmsession
-sc.exe config vmicvss start= disabled; sc.exe stop vmicvss
-sc.exe config WarpJITSvc start= disabled; sc.exe stop WarpJITSvc
-sc.exe config Wecsvc start= disabled; sc.exe stop Wecsvc
-sc.exe config wercplsupport start= disabled; sc.exe stop wercplsupport
-sc.exe config WFDSConMgrSvc start= disabled; sc.exe stop WFDSConMgrSvc
-sc.exe config WSAIFabricSvc start= disabled; sc.exe stop WSAIFabricSvc
-sc.exe config XboxGipSvc start= disabled; sc.exe stop XboxGipSvc
 
 # 3. ПЛАНИРОВЩИК И ЛИМИТЫ
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
