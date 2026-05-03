@@ -107,11 +107,11 @@ Get-AppxPackage -AllUsers *Windows.DevHome* | Remove-AppxPackage -ErrorAction Si
 Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *xboxapp* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Microsoft.XboxApp* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Microsoft.XboxGamingOverlay* | Remove-AppxPackage -ErrorAction SilentlyContinue
+Get-AppxPackage *Microsoft.XboxGameCallableUI* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage -AllUsers *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
-Get-AppxPackage *Xbox* | Remove-AppxPackage -ErrorAction SilentlyContinue
 
 
 # ============================================
