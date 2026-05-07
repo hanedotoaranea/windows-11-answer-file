@@ -32,4 +32,5 @@ sc.exe config DiagTrack start= disabled
 sc.exe stop DiagTrack
 sc.exe stop DiagTrack 
 sc delete DiagTrack
+reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh" /v "AllowWidgets" /t REG_DWORD /d 1 /f
 
