@@ -21,7 +21,7 @@ sc.exe stop AMD External Events Utility
 sc.exe config DoSvc  start= disabled
 sc.exe stop DoSvc
 # полностью отключают службу «Оптимизация доставки
-sc delete diagsvc start= disabled
+sc.exe delete diagsvc start= disabled
 sc.exe stop diagsvc
 # избавиться от службы «Служба диагностических политик»
 sc.exe config WdiSystemHost start= disabled
@@ -41,7 +41,7 @@ sc.exe stop SSDPSRV
 # отключает службу SSDP Discovery
 sc.exe config DiagTrack start= disabled
 sc.exe stop DiagTrack
-sc delete DiagTrack
+sc.exe delete DiagTrack
 # удаляют службу Connected User Experiences and Telemetry (Функциональные возможности для подключенных пользователей и телеметрия).
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh" /v "AllowWidgets" /t REG_DWORD /d 1 /f
 # разрешает использование Виджетов в Windows 11
