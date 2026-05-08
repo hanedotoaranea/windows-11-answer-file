@@ -1,6 +1,6 @@
-:: ============================================
-:: 1. СЕТЕВЫЕ НАСТРОЙКИ
-:: ============================================
+# ============================================
+# 1. СЕТЕВЫЕ НАСТРОЙКИ
+# ============================================
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d -1 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
@@ -8,9 +8,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "20000" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7" /v Attributes /t REG_DWORD /d 2 /f
 fsutil behavior set DisableDeleteNotify 0
-:: ============================================
-:: 2. СИСТЕМНЫЕ ПОЛИТИКИ (HKLM)
-:: ============================================
+# ============================================
+# 2. СИСТЕМНЫЕ ПОЛИТИКИ (HKLM)
+# ============================================
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
@@ -28,16 +28,16 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUp
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d 0 /f
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh" /v "AllowWidgets" /t REG_DWORD /d 1 /f
-:: ============================================
-:: 3. НАСТРОЙКИ ИНТЕРФЕЙСА (HKCU)
-:: ============================================
+# ============================================
+# 3. НАСТРОЙКИ ИНТЕРФЕЙСА (HKCU)
+# ============================================
 REG DELETE "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
 reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 9999 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
-:: ============================================
-:: 4. ТЕЛЕМЕТРИЯ И КОНФИДЕНЦИАЛЬНОСТЬ (HKCU)
-:: ============================================
+# ============================================
+# 4. ТЕЛЕМЕТРИЯ И КОНФИДЕНЦИАЛЬНОСТЬ (HKCU)
+# ============================================
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v TailoredExperiencesWithDiagnosticDataEnabled /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /v AcceptedPrivacyPolicy /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /v HasAccepted /t REG_DWORD /d 0 /f
@@ -50,9 +50,9 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplicat
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v RestrictImplicitTextCollection /t REG_DWORD /d 1 /f
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v RestrictImplicitInkCollection /t REG_DWORD /d 1 /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ActivityFeed" /v EnableActivityFeed /t REG_DWORD /d 0 /f
-:: ============================================
-:: 5. ЗАПРЕТ ДОСТУПА ПРИЛОЖЕНИЙ
-:: ============================================
+# ============================================
+# 5. ЗАПРЕТ ДОСТУПА ПРИЛОЖЕНИЙ
+# ============================================
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\voiceActivation" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d "Deny" /f
@@ -82,9 +82,9 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\pictures" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videos" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\fileSystem" /v "Value" /t REG_SZ /d "Deny" /f
-:: ============================================
-:: 6. ОТКЛЮЧЕНИЕ СЛУЖБ
-:: ============================================
+# ============================================
+# 6. ОТКЛЮЧЕНИЕ СЛУЖБ
+# ============================================
 sc.exe config "AMD Crash Defender Service" start= disabled
 sc.exe stop "AMD Crash Defender Service"
 sc.exe config "AMD External Events Utility" start= disabled
@@ -191,9 +191,9 @@ sc.exe config WSAFabricSvc start= disabled
 sc.exe stop WSAFabricSvc
 sc.exe config WSAIFabricSvc start= disabled
 sc.exe stop WSAIFabricSvc
-:: ============================================
-:: 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
-:: ============================================
+# ============================================
+# 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
+# ============================================
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable
 schtasks /delete /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /f
@@ -202,9 +202,9 @@ schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compat
 schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser Exp" /f
 schtasks /delete /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /f
 schtasks /delete /tn "\Microsoft\Windows\Windows Error Reporting\QueueReporting" /f
-:: ============================================
-:: 8. УДАЛЕНИЕ ПРИЛОЖЕНИЙ (PowerShell)
-:: ============================================
+# ============================================
+# 8. УДАЛЕНИЕ ПРИЛОЖЕНИЙ (PowerShell)
+# ============================================
 powershell -Command "Get-AppxPackage -AllUsers *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -Command "Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -Command "Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue"
