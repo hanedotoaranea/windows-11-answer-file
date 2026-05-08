@@ -1,5 +1,3 @@
-
-# 3. НАСТРОЙКИ ИНТЕРФЕЙСА
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
 # Устанавливает тайм-аут
 reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 9999 /f
@@ -45,9 +43,6 @@ sc.exe delete DiagTrack
 # удаляют службу Connected User Experiences and Telemetry (Функциональные возможности для подключенных пользователей и телеметрия).
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh" /v "AllowWidgets" /t REG_DWORD /d 1 /f
 # разрешает использование Виджетов в Windows 11
-
-
-
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
 # увеличивает приоритет игровых и мультимедийных задач
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d -1 /f
@@ -89,30 +84,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUp
 sc.exe config SSDPSRV start= disabled
 sc.exe stop SSDPSRV
 # отключает службу обнаружения SSDP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 sc.exe config WSAFabricSvc start= disabled
 sc.exe stop WSAFabricSv
 отключают службу подсистемы Windows для Android
@@ -225,7 +196,6 @@ Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction Silen
 Get-AppxPackage *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue
 Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue
 полностью удаляет встроенное приложение "Phone Companion" 
-
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v TailoredExperiencesWithDiagnosticDataEnabled /t REG_DWORD /d 0 /f
 отключает функцию персонализированных рекомендаций (Tailored Experiences) в Windows.
 reg add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /v AcceptedPrivacyPolicy /t REG_DWORD /d 0 /f
@@ -269,40 +239,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\pictures" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videos" /v "Value" /t REG_SZ /d "Deny" /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\fileSystem" /v "Value" /t REG_SZ /d "Deny" /f
-
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable 2>$null
 schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable 2>$null
 Windows перестанет автоматически запускать фоновую диагностику оперативной памяти
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
