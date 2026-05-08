@@ -101,3 +101,163 @@ sc.exe stop SSDPSRV
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+sc.exe config WSAFabricSvc start= disabled
+sc.exe stop WSAFabricSv
+отключают службу подсистемы Windows для Android
+sc.exe config fax start= disabled
+sc.exe stop fax
+полностью отключают службу Факса.
+sc.exe config XblAuthManager start= demand
+sc.exe stop XblAuthManager
+Диспетчер аутентификации Xbox
+sc.exe config XblGameSave start= disabled
+sc.exe stop XblGameSave
+полностью отключают службу сохранения игр Xbox
+sc.exe config XboxNetApiSvc start= disabled
+sc.exe stop XboxNetApiSvc
+ отключает сетевую службу Xbox Live
+sc.exe config RemoteRegistry start= disabled
+sc.exe stop RemoteRegistry
+отключает службу «Удаленный реестр» 
+sc.exe config AJRouter start= disabled
+sc.exe stop AJRouter
+отключает службу «Маршрутизатор AllJoyn
+sc.exe config NetTcpPortSharing start= disabled
+sc.exe stop NetTcpPortSharing
+отключает службу совместного использования портов TCP 
+sc.exe config HvHost start= disabled
+sc.exe stop HvHost
+ отключает службу узла Hyper-V (Hyper-V Host Service).
+sc.exe config Browser start= disabled
+sc.exe stop Browser
+ отключает службу «Обозреватель компьютеров»
+sc.exe config WMPNetworkSvc start= disabled
+sc.exe stop WMPNetworkSvc
+отключает службу обмена данными проигрывателя Windows Media
+sc.exe config lmhosts start= disabled
+sc.exe stop lmhosts
+ отключает службу поддержки NetBIOS через TCP/IP
+sc.exe config fhsvc start= disabled ; sc.exe stop fhsvc
+ отключает службу «История файлов»
+sc.exe config InventorySvc start= disabled ; sc.exe stop InventorySvc
+отключает службу «Инвентаризация Windows» (
+sc.exe config lltdsvc start= disabled ; sc.exe stop lltdsvc
+отключает протокол обнаружения топологии канального уровня (Link-Layer Topology Discovery Mapper).
+sc.exe config McpManagementService start= disabled ; sc.exe stop McpManagementService
+отключает службу управления универсальными печатными платами (Universal Print Management Service).
+sc.exe config MSiSCSI start= disabled ; sc.exe stop MSiSCSI
+отключает сетевые диски
+sc.exe config PrintDeviceConfigurationService start= demand ; sc.exe stop PrintDeviceConfigurationService
+конфигурация печати
+sc.exe config refsdedupsvc start= disabled ; sc.exe stop refsdedupsvc
+Служба дедупликации данных для файловой системы ReFS
+sc.exe config RemoteAccess start= disabled ; sc.exe stop RemoteAccess
+полностью отключают службу маршрутизации и удалённого доступа (Routing and Remote Access Service, RRAS).
+sc.exe config RetailDemo start= disabled ; sc.exe stop RetailDemo
+олностью отключают службу режима розничной демонстрации (Retail Demo Service).
+sc.exe config SCPolicySvc start= disabled ; sc.exe stop SCPolicySvc
+ полностью отключают службу политики удаления смарт-карт (Smart Card Removal Policy Service).
+sc.exe config SEMgrSvc start= disabled ; sc.exe stop SEMgrSvc
+ полностью отключают службу управления платежами и NFC/защищёнными элементами (Payments and NFC/SE Manager).
+ sc.exe config shpamsvc start= disabled ; sc.exe stop shpamsvc
+ полностью отключают службу управления гостевой и общей учётной записи (Shared PC Account Manager Service).
+sc.exe config SNMPTrap start= disabled ; sc.exe stop SNMPTrap
+ полностью отключают SNMP Trap Service (служба SNMP-ловушек).
+sc.exe config svsvc start= demand ; sc.exe stop svsvc
+вручную службу Spot Verifier (проверка потенциальных повреждений файловой системы).
+sc.exe config vmicguestinterface start= disabled ; sc.exe stop vmicguestinterface
+ полностью отключают службу Hyper-V Guest Service Interface (интерфейс гостевой службы Hyper-V).
+sc.exe config vmicheartbeat start= disabled ; sc.exe stop vmicheartbeat
+полностью отключают службу пульса Hyper-V
+sc.exe config vmickvpexchange start= disabled ; sc.exe stop vmickvpexchange
+ полностью отключают службу обмена данными Hyper-V (Hyper-V Data Exchange Service / KVP) .
+sc.exe config vmicrdv start= disabled ; sc.exe stop vmicrdv
+полностью отключают службу удалённой рабочей среды Hyper-V (Hyper-V Remote Desktop Virtualization Service) .
+ sc.exe config vmicshutdown start= disabled ; sc.exe stop vmicshutdown
+полностью отключают службу завершения работы гостевой ОС Hyper-V (Hyper-V Guest Shutdown Service) 
+sc.exe config vmictimesync start= disabled ; sc.exe stop vmictimesync
+ отключают службу среды Hyper-V 
+sc.exe config vmicvmsession start= disabled ; sc.exe stop vmicvmsession
+ отключают службу среды Hyper-V 
+sc.exe config vmicvss start= disabled ; sc.exe stop vmicvss
+ отключают службу среды Hyper-V 
+sc.exe config wercplsupport start= disabled ; sc.exe stop wercplsupport
+полностью отключают службу поддержки панели управления «Проблемы и решения» (Problem Reports and Solutions Control Panel Support).
+sc.exe config WSAIFabricSvc start= disabled ; sc.exe stop WSAIFabricSvc
+полностью отключают службу Windows AI Fabric (Windows AI Fabric Service).
+sc.exe config XboxGipSvc start= disabled ; sc.exe stop XboxGipSvc
+ полностью отключают службу управления аксессуарами Xbox (Xbox Accessory Management Service).
+reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "20000" /f
+изменяет значение реестра WaitToKillServiceTimeout, которое определяет, сколько времени Windows
+fsutil behavior set DisableDeleteNotify 0
+включает функцию TRIM для SSD
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" /disable
+отключаете автоматический, фоновый запуск ProcessMemoryDiagnosticEvents
+schtasks /change /tn "Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" /disable
+отключает задачу полной диагностики памяти RunFullMemoryDiagnostic
+schtasks /delete /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /f
+schtasks /delete /tn "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /f
+полностью удаляет задачи Программы улучшения качества ПО (Customer Experience Improvement Program, CEIP)
+schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /f
+полностью удаляет задачу Microsoft Compatibility Appraiser сбора телеметрии и оценки совместимости Windows 
+schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser Exp" /f
+полностью удаляет задачу Microsoft Compatibility Appraiser Exp оценки совместимости для Windows 11
+schtasks /delete /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /f
+полностью удаляет задачу StartupAppTask
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
