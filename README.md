@@ -14,4 +14,4 @@ Move the autounnated.xml file to a bootable USB flash drive with original Window
 
 
 
-![img102](https://github.com/user-attachments/assets/8ad88e90-72cc-4382-b097-0bb44e076b99)
+<img width="4592" height="2584" alt="Kelingking Beach, Nusa Penida in the Lesser Sunda Islands, Bali, Indonesia" src="https://github.com/user-attachments/assets/48535297-0e11-4b5e-9194-a42388ffed7f" />
