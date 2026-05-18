@@ -210,3 +210,10 @@ powershell -Command "Get-AppxPackage *Windows.DevHome* | Remove-AppxPackage -Err
 powershell -Command "Get-AppxPackage -AllUsers *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -Command "Get-AppxPackage *windowsphone* | Remove-AppxPackage -ErrorAction SilentlyContinue"
 powershell -Command "Get-AppxPackage *Microsoft.YourPhone* | Remove-AppxPackage -ErrorAction SilentlyContinue"
+Отключаем скачивание драйверов через Центр обновлений
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v ExcludeWUDriversInQualityUpdate /t REG_DWORD /d 1 /f
+Отключаем поиск драйверов в Центре обновлений
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v SearchOrderConfig /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" /v SearchOrderConfig /t REG_DWORD /d 0 /f
+Отключаем автоматический поиск драйверов через интернет
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v PreventDeviceMetadataFromNetwork /t REG_DWORD /d 1 /f
