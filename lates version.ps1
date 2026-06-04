@@ -35,6 +35,7 @@ REG DELETE "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
 reg add "HKCU\Control Panel\Desktop" /v HungAppTimeout /t REG_SZ /d "1000" /f
 reg add "HKCU\Control Panel\Desktop" /v ForegroundFlashCount /t REG_DWORD /d 9999 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /t REG_DWORD /d 1 /f
+
 # ============================================
 # 4. ТЕЛЕМЕТРИЯ И КОНФИДЕНЦИАЛЬНОСТЬ (HKCU)
 # ============================================
@@ -202,6 +203,7 @@ schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compat
 schtasks /delete /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser Exp" /f
 schtasks /delete /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /f
 schtasks /delete /tn "\Microsoft\Windows\Windows Error Reporting\QueueReporting" /f
+
 # ============================================
 # 8. УДАЛЕНИЕ ПРИЛОЖЕНИЙ (PowerShell)
 # ============================================
