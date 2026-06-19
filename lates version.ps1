@@ -86,111 +86,111 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 # ============================================
 # 6. ОТКЛЮЧЕНИЕ СЛУЖБ
 # ============================================
-sc.exe config "AMD Crash Defender Service" start= disabled
+sc.exe config "AMD Crash Defender Service" start= manual
 sc.exe stop "AMD Crash Defender Service"
-sc.exe config "AMD External Events Utility" start= disabled
+sc.exe config "AMD External Events Utility" start= manual
 sc.exe stop "AMD External Events Utility"
-sc.exe config DiagTrack start= disabled
+sc.exe config DiagTrack start= manual
 sc.exe stop DiagTrack
 sc.exe delete DiagTrack
-sc.exe config diagsvc start= disabled
+sc.exe config diagsvc start= manual
 sc.exe stop diagsvc
 sc.exe delete diagsvc
-sc.exe config WdiSystemHost start= disabled
+sc.exe config WdiSystemHost start= manual
 sc.exe stop WdiSystemHost
-sc.exe config DoSvc start= disabled
+sc.exe config DoSvc start= manual
 sc.exe stop DoSvc
-sc.exe config SSDPSRV start= disabled
+sc.exe config SSDPSRV start= manual
 sc.exe stop SSDPSRV
-sc.exe config RasMan start= disabled
+sc.exe config RasMan start= manual
 sc.exe stop RasMan
-sc.exe config RemoteAccess start= disabled
+sc.exe config RemoteAccess start= manual
 sc.exe stop RemoteAccess
-sc.exe config RemoteRegistry start= disabled
+sc.exe config RemoteRegistry start= manual
 sc.exe stop RemoteRegistry
-sc.exe config lmhosts start= disabled
+sc.exe config lmhosts start= manual
 sc.exe stop lmhosts
-sc.exe config lltdsvc start= disabled
+sc.exe config lltdsvc start= manual
 sc.exe stop lltdsvc
-sc.exe config NetTcpPortSharing start= disabled
+sc.exe config NetTcpPortSharing start= manual
 sc.exe stop NetTcpPortSharing
-sc.exe config WFDSConMgrSvc start= disabled
+sc.exe config WFDSConMgrSvc start= manual
 sc.exe stop WFDSConMgrSvc
-sc.exe config AJRouter start= disabled
+sc.exe config AJRouter start= manual
 sc.exe stop AJRouter
-sc.exe config icssvc start= disabled
+sc.exe config icssvc start= manual
 sc.exe stop icssvc
-sc.exe config MSiSCSI start= disabled
+sc.exe config MSiSCSI start= manual
 sc.exe stop MSiSCSI
-sc.exe config HvHost start= disabled
+sc.exe config HvHost start= manual
 sc.exe stop HvHost
-sc.exe config vmicguestinterface start= disabled
+sc.exe config vmicguestinterface start= manual
 sc.exe stop vmicguestinterface
-sc.exe config vmicheartbeat start= disabled
+sc.exe config vmicheartbeat start= manual
 sc.exe stop vmicheartbeat
-sc.exe config vmickvpexchange start= disabled
+sc.exe config vmickvpexchange start= manual
 sc.exe stop vmickvpexchange
-sc.exe config vmicrdv start= disabled
+sc.exe config vmicrdv start= manual
 sc.exe stop vmicrdv
-sc.exe config vmicshutdown start= disabled
+sc.exe config vmicshutdown start= manual
 sc.exe stop vmicshutdown
-sc.exe config vmictimesync start= disabled
+sc.exe config vmictimesync start= manual
 sc.exe stop vmictimesync
-sc.exe config vmicvmsession start= disabled
+sc.exe config vmicvmsession start= manual
 sc.exe stop vmicvmsession
-sc.exe config vmicvss start= disabled
+sc.exe config vmicvss start= manual
 sc.exe stop vmicvss
-sc.exe config XblAuthManager start= disabled
+sc.exe config XblAuthManager start= manual
 sc.exe stop XblAuthManager
-sc.exe config XblGameSave start= disabled
+sc.exe config XblGameSave start= manual
 sc.exe stop XblGameSave
-sc.exe config XboxNetApiSvc start= disabled
+sc.exe config XboxNetApiSvc start= manual
 sc.exe stop XboxNetApiSvc
-sc.exe config XboxGipSvc start= disabled
+sc.exe config XboxGipSvc start= manual
 sc.exe stop XboxGipSvc
-sc.exe config Browser start= disabled
+sc.exe config Browser start= manual
 sc.exe stop Browser
-sc.exe config TrkWks start= disabled
+sc.exe config TrkWks start= manual
 sc.exe stop TrkWks
-sc.exe config WMPNetworkSvc start= disabled
+sc.exe config WMPNetworkSvc start= manual
 sc.exe stop WMPNetworkSvc
-sc.exe config lfsvc start= disabled
+sc.exe config lfsvc start= manual
 sc.exe stop lfsvc
-sc.exe config fhsvc start= disabled
+sc.exe config fhsvc start= manual
 sc.exe stop fhsvc
-sc.exe config InventorySvc start= disabled
+sc.exe config InventorySvc start= manual
 sc.exe stop InventorySvc
-sc.exe config McpManagementService start= disabled
+sc.exe config McpManagementService start= manual
 sc.exe stop McpManagementService
-sc.exe config fax start= disabled
+sc.exe config fax start= manual
 sc.exe stop fax
-sc.exe config wercplsupport start= disabled
+sc.exe config wercplsupport start= manual
 sc.exe stop wercplsupport
-sc.exe config Wecsvc start= disabled
+sc.exe config Wecsvc start= manual
 sc.exe stop Wecsvc
-sc.exe config whesvc start= disabled
+sc.exe config whesvc start= manual
 sc.exe stop whesvc
 sc.exe config PrintDeviceConfigurationService start= demand
 sc.exe stop PrintDeviceConfigurationService
-sc.exe config refsdedupsvc start= disabled
+sc.exe config refsdedupsvc start= manual
 sc.exe stop refsdedupsvc
-sc.exe config RetailDemo start= disabled
+sc.exe config RetailDemo start= manual
 sc.exe stop RetailDemo
-sc.exe config SCPolicySvc start= disabled
+sc.exe config SCPolicySvc start= manual
 sc.exe stop SCPolicySvc
-sc.exe config SEMgrSvc start= disabled
+sc.exe config SEMgrSvc start= manual
 sc.exe stop SEMgrSvc
-sc.exe config shpamsvc start= disabled
+sc.exe config shpamsvc start= manual
 sc.exe stop shpamsvc
-sc.exe config smphost start= disabled
+sc.exe config smphost start= manual
 sc.exe stop smphost
-sc.exe config SNMPTrap start= disabled
+sc.exe config SNMPTrap start= manual
 sc.exe stop SNMPTrap
-sc.exe config svsvc start= disabled
+sc.exe config svsvc start= manual
 sc.exe stop svsvc
-sc.exe config WSAFabricSvc start= disabled
+sc.exe config WSAFabricSvc start= manual
 sc.exe stop WSAFabricSvc
-sc.exe config WSAIFabricSvc start= disabled
+sc.exe config WSAIFabricSvc start= manual
 sc.exe stop WSAIFabricSvc
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
