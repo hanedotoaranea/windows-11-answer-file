@@ -2,7 +2,7 @@
 # 1. СЕТЕВЫЕ НАСТРОЙКИ
 # ============================================
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t REG_DWORD /d 20 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d -1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d 4294967295 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 00000026 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v DefaultTTL /t REG_DWORD /d 128 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d "20000" /f
@@ -98,8 +98,8 @@ sc.exe stop diagsvc
 sc.exe delete diagsvc
 sc.exe config WdiSystemHost start= manual
 sc.exe stop WdiSystemHost
-sc.exe config DoSvc start= manual
-sc.exe stop DoSvc
+sc.exe config  start= manual
+sc.exe stop 
 sc.exe config SSDPSRV start= manual
 sc.exe stop SSDPSRV
 sc.exe config RasMan start= manual
