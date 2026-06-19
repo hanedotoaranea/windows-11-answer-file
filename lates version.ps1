@@ -90,10 +90,10 @@ sc.exe config "AMD Crash Defender Service" start= manual
 sc.exe stop "AMD Crash Defender Service"
 sc.exe config "AMD External Events Utility" start= manual
 sc.exe stop "AMD External Events Utility"
-sc.exe config DiagTrack start= manual
+sc.exe config DiagTrack start= disabled
 sc.exe stop DiagTrack
 sc.exe delete DiagTrack
-sc.exe config diagsvc start= manual
+sc.exe config diagsvc start= disabled
 sc.exe stop diagsvc
 sc.exe delete diagsvc
 sc.exe config WdiSystemHost start= manual
