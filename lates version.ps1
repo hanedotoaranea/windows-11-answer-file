@@ -140,13 +140,13 @@ sc.exe config vmicvmsession start= manual
 sc.exe stop vmicvmsession
 sc.exe config vmicvss start= manual
 sc.exe stop vmicvss
-sc.exe config XblAuthManager start= manual
+sc.exe config XblAuthManager start= disabled
 sc.exe stop XblAuthManager
-sc.exe config XblGameSave start= manual
+sc.exe config XblGameSave start= disabled
 sc.exe stop XblGameSave
-sc.exe config XboxNetApiSvc start= manual
+sc.exe config XboxNetApiSvc start= disabled
 sc.exe stop XboxNetApiSvc
-sc.exe config XboxGipSvc start= manual
+sc.exe config XboxGipSvc start= disabled
 sc.exe stop XboxGipSvc
 sc.exe config Browser start= manual
 sc.exe stop Browser
