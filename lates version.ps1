@@ -192,6 +192,10 @@ sc.exe config WSAFabricSvc start= manual
 sc.exe stop WSAFabricSvc
 sc.exe config WSAIFabricSvc start= manual
 sc.exe stop WSAIFabricSvc
+sc.exe config bthserv start= manual
+sc.exe stop bthserv
+sc.exe config WdiServiceHost start= manual
+sc.exe stop WdiServiceHost
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
 # ============================================
