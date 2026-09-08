@@ -197,6 +197,8 @@ sc.exe config bthserv start= manual
 sc.exe stop bthserv
 sc.exe config WdiServiceHost start= manual
 sc.exe stop WdiServiceHost
+sc.exe config StiSvc start= manual
+sc.exe stop StiSvc
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
 # ============================================
