@@ -101,11 +101,9 @@ sc.exe stop "AMD External Events Utility"
 
 sc.exe config DiagTrack start= disabled
 sc.exe stop DiagTrack
-sc.exe delete DiagTrack
 
 sc.exe config diagsvc start= disabled
 sc.exe stop diagsvc
-sc.exe delete diagsvc
 
 sc.exe config WdiSystemHost start= demand
 sc.exe stop WdiSystemHost
@@ -390,7 +388,8 @@ sc.exe config stisvc start= disabled
 sc.exe stop stisvc
 sc.exe config VacSvc start= disabled
 sc.exe stop VacSvc
-sc.exe delete dmwappushservice
+sc.exe config dmwappushservice  start= manual
+sc.exe stop dmwappushservice 
 sc.exe config WalletService start= disabled
 sc.exe stop WalletService
 sc.exe config PimIndexMaintenanceSvc start= disabled
@@ -407,7 +406,8 @@ sc.exe config WMPNetworkSvc start= disabled
 sc.exe stop WMPNetworkSvc
 sc.exe config vmickvpexchange start= disabled
 sc.exe stop vmickvpexchange
-sc.exe delete CDPSvc
+sc.exe config CDPSvc start= manual
+sc.exe stop CDPSvc
 sc.exe config wisvc start= disabled
 sc.exe stop wisvc
 sc.exe config SharedRealitySvc start= disabled
@@ -452,7 +452,6 @@ sc.exe config WdiSystemHost start= disabled
 sc.exe stop WdiSystemHost
 sc.exe config AppMgmt start= disabled
 sc.exe stop AppMgmt
-sc.exe delete DiagTrack
 sc.exe config MsKeyboardFilter start= disabled
 sc.exe stop MsKeyboardFilter
 sc.exe delete diagsvc
