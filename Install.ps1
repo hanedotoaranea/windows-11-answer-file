@@ -456,7 +456,8 @@ sc.exe delete DiagTrack
 sc.exe config MsKeyboardFilter start= disabled
 sc.exe stop MsKeyboardFilter
 sc.exe delete diagsvc
-sc.exe delete ssh-agent
+sc.exe config ssh-agent  start= disabled
+sc.exe stop ssh-agent
 sc.exe config MixedRealityOpenXRSvc start= disabled
 sc.exe stop MixedRealityOpenXRSvc
 sc.exe config XboxGipSvc start= disabled
