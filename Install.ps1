@@ -257,7 +257,6 @@ sc.exe stop StiSvc
 
 sc.exe config SysMain start= demand
 sc.exe stop SysMain
-sc.exe config wudfsvc start=disabled
 
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
@@ -286,11 +285,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" /v Sear
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" /v SearchOrderConfig /t REG_DWORD /d 0 /f
 # Отключаем автоматический поиск драйверов через интернет
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v PreventDeviceMetadataFromNetwork /t REG_DWORD /d 1 /f
-for /f %I in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /k /f "AarSvc" ^| find /i "AarSvc"') do (reg add "%I" /v "Start" /t reg_dword /d 4 /f)
-for /f %I in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /k /f "MessagingService" ^| find /i "MessagingService"') do (reg add "%I" /v "Start" /t reg_dword /d 4 /f)
-for /f %I in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /k /f "P9RdrService" ^| find /i "P9RdrService"') do (reg add "%I" /v "Start" /t reg_dword /d 4 /f)
-for /f %I in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /k /f "PenService" ^| find /i "PenService"') do (reg add "%I" /v "Start" /t reg_dword /d 4 /f)
-for /f %I in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /k /f "PrintWorkflowUserSvc" ^| find /i "PrintWorkflowUserSvc"') do (reg add "%I" /v "Start" /t reg_dword /d 4 /f)
 
 
 
