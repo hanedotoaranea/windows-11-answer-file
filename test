@@ -1,2 +1,0 @@
-sc.exe config LanmanWorkstation start= demand
-sc.exe stop LanmanWorkstation
