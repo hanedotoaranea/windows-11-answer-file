@@ -257,6 +257,25 @@ sc.exe stop StiSvc
 
 sc.exe config SysMain start= demand
 sc.exe stop SysMain
+# WSearch — Windows Search (индексация)
+sc.exe config WSearch start= disabled
+sc.exe stop WSearch
+
+# DPS — Diagnostic Policy Service
+sc.exe config DPS start= disabled
+sc.exe stop DPS
+
+# lfsvc — Geolocation
+sc.exe config lfsvc start= disabled
+sc.exe stop lfsvc
+
+# LanmanServer — Server (шаринг папок/принтеров)
+sc.exe config LanmanServer start= disabled
+sc.exe stop LanmanServer
+
+# SstpSvc — SSTP VPN
+sc.exe config SstpSvc start= disabled
+sc.exe stop SstpSvc
 
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
