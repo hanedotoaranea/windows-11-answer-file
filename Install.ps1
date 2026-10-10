@@ -277,6 +277,9 @@ sc.exe stop LanmanServer
 sc.exe config SstpSvc start= disabled
 sc.exe stop SstpSvc
 
+sc.exe config LanmanWorkstation start= demand
+sc.exe stop LanmanWorkstation
+
 # ============================================
 # 7. ЗАДАНИЯ ПЛАНИРОВЩИКА
 # ============================================
