@@ -295,8 +295,6 @@ sc.exe config xbgm start= disabled
 sc.exe stop xbgm
 sc.exe config wmiApSrv start= disabled
 sc.exe stop wmiApSrv
-sc.exe config WbioSrvc start= disabled
-sc.exe stop WbioSrvc
 sc.exe delete Browser
 sc.exe config DevQueryBroker start= disabled
 sc.exe stop DevQueryBroker
