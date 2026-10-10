@@ -332,8 +332,6 @@ sc.exe config SessionEnv start= disabled
 sc.exe stop SessionEnv
 sc.exe config SharedAccess start= disabled
 sc.exe stop SharedAccess
-sc.exe config ShellHWDetection start= disabled
-sc.exe stop ShellHWDetection
 sc.exe config SCPolicySvc start= disabled
 sc.exe stop SCPolicySvc
 sc.exe config BcastDVRUserService start= disabled
@@ -424,8 +422,6 @@ sc.exe config SENS start= disabled
 sc.exe stop SENS
 sc.exe config WinRM start= disabled
 sc.exe stop WinRM
-sc.exe config WpnService start= disabled
-sc.exe stop WpnService
 sc.exe config EntAppSvc start= disabled
 sc.exe stop EntAppSvc
 sc.exe config HvHost start= disabled
