@@ -1,5 +1,6 @@
 <img width="3841" height="2400" alt="img32" src="https://github.com/user-attachments/assets/34819836-72b5-4a1f-9fc8-a618f76ecf3d" />
 [![All releases](https://img.shields.io/github/v/release/hanedotoaranea/windows-11-answer-file?include_prereleases&style=for-the-badge&label=All+releases)](https://github.com/hanedotoaranea/windows-11-answer-file/releases)
+
 [![Repo size](https://img.shields.io/github/repo-size/hanedotoaranea/windows-11-answer-file?style=for-the-badge)](https://github.com/hanedotoaranea/windows-11-answer-file)
 
 Applicable to Windows 10.
