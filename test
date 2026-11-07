@@ -1,0 +1,10 @@
+sc.exe config ndu start= auto
+Set-Service -Name ndu -StartupType Automatic
+
+
+
+
+
+
+
+
